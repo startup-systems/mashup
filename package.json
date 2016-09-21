@@ -17,7 +17,7 @@
   "homepage": "https://github.com/advanced-js/mashup",
   "devDependencies": {
     "globby": "^6.0.0",
-    "html-validator-cli": "^2.0.0",
+    "html-validator-cli": "afeld/html-validator-cli#5c7f12080",
     "jshint": "^2.9.3"
   },
   "jshintConfig": {

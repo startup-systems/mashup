@@ -42,3 +42,10 @@ Iterate!
 * automated tests
     * [Sinon.js fakeServer](http://sinonjs.org/docs/#fakeServer) may be helpful
 * fancy interactivity/animations
+
+## Running tests locally
+
+Within this repository directory in your [virtual machine](https://github.com/startup-systems/vm):
+
+1. [Install Node.js 6.x.](https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions)
+1. Run `npm test -s`.

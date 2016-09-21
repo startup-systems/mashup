@@ -1,10 +1,11 @@
 language: node_js
 node_js:
-  - "0.10"
+  - "6"
 branches:
   only:
+    # needs to be listed explicitly
+    - gh-pages
     - /.*/
-before_install: npm install -g grunt-cli
 sudo: false
 cache:
   directories:

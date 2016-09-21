@@ -2,7 +2,9 @@
   "name": "mashup",
   "description": "mashup project",
   "scripts": {
-    "test": "grunt"
+    "lint_js": "jshint --extract=auto --extra-ext=.html .",
+    "test": "echo '---Validating HTML---' && npm run validate_html && echo '---Validating JavaScript---' && npm run lint_js",
+    "validate_html": "html-validator --file=index.html"
   },
   "repository": {
     "type": "git",
@@ -13,8 +15,18 @@
   },
   "homepage": "https://github.com/advanced-js/mashup",
   "devDependencies": {
-    "grunt": "^0.4.4",
-    "grunt-contrib-jshint": "^0.10.0",
-    "grunt-html-validation": "^0.1.15"
+    "html-validator-cli": "^2.0.0",
+    "jshint": "^2.9.3"
+  },
+  "jshintConfig": {
+    "browser": true,
+    "eqeqeq": true,
+    "forin": true,
+    "freeze": true,
+    "latedef": true,
+    "maxdepth": 4,
+    "maxparams": 3,
+    "maxstatements": 10,
+    "newcap": true
   }
 }

@@ -1,18 +1,24 @@
 const fs = require('fs');
 const globby = require('globby');
 
+
 // get current file path, relative to directory that the script is run from
 const currentFileRelative = () => {
   // based off of http://stackoverflow.com/a/31856198/358804
   return __filename.slice(process.cwd().length + 1);
 };
 
-// attempt to match the files that JSHint is checking
-const getJSHintFiles = () => {
+// match the patterns that JSHint is excluding
+const getJSHintExcludes = () => {
   let patterns = fs.readFileSync('.jshintignore').toString().split("\n");
   patterns = patterns.filter(pattern => { return !!pattern; });
   // exclude empty
-  patterns = patterns.map(pattern => { return `!${pattern}`; });
+  return patterns.map(pattern => { return `!${pattern}`; });
+};
+
+// attempt to match the files that JSHint is checking
+const filePatterns = () => {
+  let patterns = getJSHintExcludes();
   const currentFile = currentFileRelative();
   patterns.unshift('*.html', '*.js', `!${currentFile}`);
 
@@ -21,16 +27,21 @@ const getJSHintFiles = () => {
 
 const matchAjax = /((\$|jQuery)\.(ajax|get(JSON|Script)?)|new XMLHttpRequest)\(/;
 
-const isAjaxCalled = (source) => {
+const isAjaxCalled = source => {
   return matchAjax.test(source);
 };
 
-const patterns = getJSHintFiles();
+const containsAjaxCall = path => {
+  const contents = fs.readFileSync(path).toString();
+  return isAjaxCalled(contents);
+};
+
+
+const patterns = filePatterns();
 
 globby(patterns).then(paths => {
   const ajaxFound = paths.some(path => {
-    const contents = fs.readFileSync(path).toString();
-    return isAjaxCalled(contents);
+    return containsAjaxCall(path);
   });
 
   if (ajaxFound) {

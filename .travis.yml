@@ -6,7 +6,6 @@ branches:
     # needs to be listed explicitly
     - gh-pages
     - /.*/
-before_install: npm install -g grunt-cli
 sudo: false
 cache:
   directories:

@@ -2,8 +2,9 @@
   "name": "mashup",
   "description": "mashup project",
   "scripts": {
+    "check_ajax": "node testAjax.js",
     "lint_js": "jshint --extract=auto --extra-ext=.html .",
-    "test": "echo '---Validating HTML---' && npm run validate_html && echo '---Validating JavaScript---' && npm run lint_js",
+    "test": "echo '---Validating HTML---' && npm run validate_html && echo '---Validating JavaScript---' && npm run lint_js && echo '---Checking for AJAX---' && npm run check_ajax",
     "validate_html": "html-validator --file=index.html"
   },
   "repository": {
@@ -15,12 +16,14 @@
   },
   "homepage": "https://github.com/advanced-js/mashup",
   "devDependencies": {
+    "globby": "^6.0.0",
     "html-validator-cli": "^2.0.0",
     "jshint": "^2.9.3"
   },
   "jshintConfig": {
     "browser": true,
     "eqeqeq": true,
+    "esversion": 6,
     "forin": true,
     "freeze": true,
     "latedef": true,

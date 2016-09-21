@@ -21,27 +21,10 @@ A couple things to look for in an API (or at least the endpoints you're using) f
 
 Here is a [list of API suggestions](https://gist.github.com/afeld/4952991).
 
-## V1
-
-Get the data to show up on the page.
-
-## V2
-
-First pass. Get your main feature working in the simplest way possible.
-
-## V3
-
-Iterate!
-
-* Refactor
-* Add a new feature
-
-## Bonus points
+## Too easy?
 
 * build in an object-oriented way
-* automated tests
-    * [Sinon.js fakeServer](http://sinonjs.org/docs/#fakeServer) may be helpful
-* fancy interactivity/animations
+* add fancy interactivity/animations
 
 ## Running tests locally
 

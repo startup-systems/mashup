@@ -48,4 +48,14 @@ Iterate!
 Within this repository directory in your [virtual machine](https://github.com/startup-systems/vm):
 
 1. [Install Node.js 6.x.](https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions)
-1. Run `npm test -s`.
+1. Install the project dependencies.
+
+    ```bash
+    npm install
+    ```
+
+1. Run the tests.
+
+    ```bash
+    npm test -s
+    ```

@@ -1,8 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Mashup</title>
-  </head>
-  <body>
-  </body>
+	<head>
+		<script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
+		<script>
+			var SC = require('soundcloud');
+
+			SC.initialize({
+			  client_id: 'shimieshimshim',
+			  redirect_uri: 'https://soundcloud.com/shimieshimshim'
+			});
+
+			// SC.stream('/tracks/293').then(function(player){
+			// 	player.play();
+			// });
+
+			SC.oEmbed('http://soundcloud.com/forss/flickermood', {
+				auto_play: true
+				}).then(function(embed){
+				console.log('oEmbed response: ', embed);
+			});
+		</script>
+
+		<script type="text/javascript">
+			SC.oEmbed('http://soundcloud.com/forss/sets/soulhack', {
+			element: document.getElementById('putTheWidgetHere')
+			});
+		</script>
+
+		<title>Mashup</title>
+	</head>
+	<body onload="window.setTimeout(window.opener.SC.connectCallback, 1)">
+		<b style="text-align: center;">This popup should automatically close in a few seconds</b>
+		<div id="putTheWidgetHere"></div>
+	</body>
+ 	<footer>
+
+	</footer>
 </html>

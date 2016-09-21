@@ -1,39 +1,45 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
-		<script>
-			var SC = require('soundcloud');
-
-			SC.initialize({
-			  client_id: 'shimieshimshim',
-			  redirect_uri: 'https://soundcloud.com/shimieshimshim'
-			});
-
-			// SC.stream('/tracks/293').then(function(player){
-			// 	player.play();
-			// });
-
-			SC.oEmbed('http://soundcloud.com/forss/flickermood', {
-				auto_play: true
-				}).then(function(embed){
-				console.log('oEmbed response: ', embed);
-			});
-		</script>
-
-		<script type="text/javascript">
-			SC.oEmbed('http://soundcloud.com/forss/sets/soulhack', {
-			element: document.getElementById('putTheWidgetHere')
-			});
-		</script>
-
-		<title>Mashup</title>
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="static/css/reset.css">
+		<link rel="stylesheet" type="text/css" href="static/css/index-style.css">
+		<link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
 	</head>
-	<body onload="window.setTimeout(window.opener.SC.connectCallback, 1)">
-		<b style="text-align: center;">This popup should automatically close in a few seconds</b>
-		<div id="putTheWidgetHere"></div>
-	</body>
- 	<footer>
+	<body>
+		<h2 class="sign-up"> NetID ss3656</h2>
 
-	</footer>
+		<div class="centerIt">
+
+			<form class="form-horizontal" id="login-form">
+
+				<div style="text-align: center;">
+					<img id="center" src="static/img/shimieshimshim.png" width="80%" height="auto">
+				</div>
+				
+				<div class="form-group" style="text-align: center;">
+					<h5 style="text-align: center;"> Clara SeoHyun Shim </h5>
+				</div>
+
+
+				<div class="appDescription">
+					<p>Roald Dahl believes that if you have good thoughts, they will shine out your face like sun beams and you will always look lovely. I try to live up to that. </p>
+				</div>
+			</form>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-84123002-1', 'auto');
+  ga('send', 'pageview');
+
+</script>		
+
+
+	</body>
 </html>

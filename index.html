@@ -6,8 +6,10 @@
 		<link rel="stylesheet" type="text/css" href="static/css/reset.css">
 		<link rel="stylesheet" type="text/css" href="static/css/index-style.css">
 		<link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+		<script type="text/javascript" src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
+		<script type="text/javascript"  src="scripts.js"></script>
 	</head>
-	<body>
+	<body onload="window.setTimeout(window.opener.SC.connectCallback, 1)">
 		<h2 class="sign-up"> NetID ss3656</h2>
 
 		<div class="centerIt">
@@ -24,22 +26,10 @@
 
 
 				<div class="appDescription">
-					<p>Roald Dahl believes that if you have good thoughts, they will shine out your face like sun beams and you will always look lovely. I try to live up to that. </p>
+					<b style="text-align: center;">This popup should automatically close in a few seconds</b>
+					<div id="putTheWidgetHere"></div>
 				</div>
-			</form>
-
-<!-- Google Analytics -->
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-84123002-1', 'auto');
-  ga('send', 'pageview');
-
-</script>		
-
+			</form>	
 
 	</body>
 </html>

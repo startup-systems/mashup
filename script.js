@@ -11,8 +11,3 @@ SC.get('/shimieshimshim').then(function(tracks){
 SC.stream('/shimieshimshim').then(function(player){
   player.play();
 });
-
-var track_url = 'http://soundcloud.com/shimieshimshim';
-SC.oEmbed(track_url, { auto_play: true }).then(function(oEmbed) {
-  console.log('oEmbed response: ', oEmbed);
-});

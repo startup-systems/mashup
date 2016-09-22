@@ -1,6 +1,14 @@
 # Mashup project
 
+This is a fairly basic mashup that uses the google maps direction api to provid random directions from one arby's to another.
+
+bootstrap cdn is used.
+
 This project is open-ended! Requirements:
+
+
+
+Directions:
 
 * Build a site that uses data from at least one external API in an interesting, interactive way.
 * Replace this README with a description of the project.

@@ -1,20 +1,15 @@
 $(document).ready(function() {
-	$.ajax({
-		type: 'GET',
-		url: "https://montanaflynn-mapit.p.mashape.com/directions?ending=New+York%2C+NY%2C+USA&starting=Orange+County%2C+CA",
-		dataType:'json',
-		beforeSend: function(xhr) {
-			xhr.setRequestHeader("X-Mashape-Key", "");
-			xhr.setRequestHeader("Accept", "application/json");
-		}
-	}).done(function(data) {
-		var slang = ["sup", "yo","now"];
+
+	var direction = data.directions[i].direction;
+	var duration = data.directions[i].duration;
+	var maneuver = data.directions[i].maneuver;
+	var distance = data.directions[i].distance;
+	function loadDirections(data){
 		for(var i = 0; i < data.directions.length; i++) {
-			var direction = data.directions[i].direction;
-			var duration = data.directions[i].duration;
-			var maneuver = data.directions[i].maneuver;
-			var distance = data.directions[i].distance;
-			console.log(data.directions[i]);
+			direction = data.directions[i].direction;
+			duration = data.directions[i].duration;
+			maneuver = data.directions[i].maneuver;
+			distance = data.directions[i].distance;
 			if (i===0){
 				$( "body" ).append( "<div class='row'><p>travel: "+ distance + " before you " +direction+"</p></div>" );
 			}
@@ -25,5 +20,16 @@ $(document).ready(function() {
 				$("body").append("<p>YOU MADE IT</p>");
 			}
 		}
+	}
+	$.ajax({
+		type: 'GET',
+		url: "https://montanaflynn-mapit.p.mashape.com/directions?ending=New+York%2C+NY%2C+USA&starting=Orange+County%2C+CA",
+		dataType:'json',
+		beforeSend: function(xhr) {
+			xhr.setRequestHeader("X-Mashape-Key", "zfPYg64kctmshbpAu8n7QndlKxvHp161wQzjsnW4nFLIgNPazg");
+			xhr.setRequestHeader("Accept", "application/json");
+		}
+	}).done(function(data) {
+		loadDirections(data);
 	});
 });

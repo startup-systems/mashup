@@ -11,6 +11,15 @@
 	}
 
 // soundcloud ---------------
+
+SC.get('/shimieshimshim').then(function(tracks){
+  alert('Latest track: ' + tracks[0].title);
+});
+
+SC.stream('/shimieshimshim').then(function(player){
+  player.play();
+});
+
   (function(){
     var widgetIframe = document.getElementById('sc-widget'),
         widget       = SC.Widget(widgetIframe);

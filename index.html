@@ -8,6 +8,7 @@
 		<link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
 		<script type="text/javascript" src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
 		<script type="text/javascript"  src="static/assets/scripts.js"></script>
+
 	</head>
 	<body onload="window.setTimeout(window.opener.SC.connectCallback, 1)">
 		<h2 class="sign-up"> NetID ss3656</h2>
@@ -17,7 +18,8 @@
 			<form class="form-horizontal" id="login-form">
 
 				<div style="text-align: center;">
-					<img id="center" src="static/img/shimieshimshim.png" width="80%" height="auto">
+
+					<div id="map" style="width:200%;height:500px"></div>
 				</div>
 				
 				<div class="form-group" style="text-align: center;">
@@ -33,13 +35,16 @@
 	</body>
 
 	<script>
-SC.initialize({
-  client_id: 'YOUR_CLIENT_ID'
-});
+	function myMap() {
+	  var mapCanvas = document.getElementById("map");
+	  var mapOptions = {
+	    center: new google.maps.LatLng(51.5, -0.2), 
+	    zoom: 10,
+	    maptype: "satellite",
+	  }
+	  var map = new google.maps.Map(mapCanvas, mapOptions);
+	}
+	</script>
 
-var track_url = 'http://soundcloud.com/forss/flickermood';
-SC.oEmbed(track_url, { auto_play: true }).then(function(oEmbed) {
-  console.log('oEmbed response: ', oEmbed);
-});
-</script>
+<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
 </html>

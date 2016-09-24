@@ -1,8 +1,50 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-  <head>
-    <title>Mashup</title>
-  </head>
-  <body>
-  </body>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Mashup</title>
+
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+	</head>
+	<body>
+		<div class="container" role="main">
+			<div class="jumbotron">
+				<h1>Flickr Image Search</h1>
+				<p>Type a search term into the box to find pictures!</p>				
+			</div>
+		</div>
+
+		<div style="text-align:center; margin: 1em 0em 0em 0em">
+			<input id="imgSearch" type="text" placeholder="Search for a song...">
+			<button id="searchBtn" type="button" class="btn btn-primary" onclick="searchFlickr();">Search</button>
+		</div>
+		
+		<div id="images">
+		</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+
+		<script>
+			function searchFlickr() {
+			  $('#images').empty();
+			  var searchString = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+			  $.getJSON( searchString, {
+			    tags: document.getElementById("imgSearch").value,
+			    tagmode: "any",
+			    format: "json"
+			  })
+			    .done(function( data ) {
+			      $.each( data.items, function( i, item ) {
+				$( "<img style='margin: 1em 1em 1em 1em'>" ).attr( "src", item.media.m ).appendTo( "#images" );
+				if ( i === 20 ) {
+				  return false;
+				}
+			      });
+			    });
+			}
+		</script>
+
+	</body>
 </html>
+

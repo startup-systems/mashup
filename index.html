@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <title>fz234</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+		<title>fz234</title>
+		<link href="style.css" rel="stylesheet" type="text/css" />
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 </head>
 <body>
 <div id="wrapper">
-  <div id="header">
-  </div>
-  <script>
-  $(document).ready(function(){
-    $('#immagine').click(function(){
-      $('#immagine').attr('src', 'http://orig05.deviantart.net/a1df/f/2011/112/8/f/nyan_cat_gif_by_kodiakpaws-d3emqu1.gif');
-    });
+	<div id="header">
+	</div>
+	<script>
+	$(document).ready(function(){
+		$('#immagine').click(function(){
+			$('#immagine').attr('src', 'http://orig05.deviantart.net/a1df/f/2011/112/8/f/nyan_cat_gif_by_kodiakpaws-d3emqu1.gif');
+		});
 })
 </script>
 </div>
@@ -25,53 +25,52 @@
 			<div id="logo">
 			fz234 Federico Zarfati
 			</div>
-			<p>
-			     <img src="https://avatars3.githubusercontent.com/u/2929194?v=3&s=460" id="immagine" width="139" height="150" style="margin: 0 10px 10px 0;float:left;" />
-           <figcaption>Click Me!</figcaption>
-      	    <em>This is my small biography!</em>
-				        <em>I come from Italy and I am a Computer Scientist</em>
-				            <em>I am really passionate about Artificial Intelligence.<em/>
-			</p>
+			   <p>
+					 <img src="https://avatars3.githubusercontent.com/u/2929194?v=3&s=460" id="immagine" alt="altfff" width="139" height="150" style="margin: 0 10px 10px 0;float:left;" />
+						<em>This is my small biography!</em>
+								<em>I come from Italy and I am a Computer Scientist</em>
+										<em>I am really passionate about Artificial Intelligence.<em/>
+			                 </p>
 		</div>
 		<div id="right-column">
 			<div class="sidebar">
 				<h3>About Me</h3>
 				<p>Hi! I am Federico and this is my website for the Startup Systems course!</p>
 		</div>
-    <div id="map"></div>
-    <script>
-      function initMap() {
-        var myLatlng = {lat: 41.890251, lng: 12.492373};
+		<div id="map"></div>
+		<script>
+			function initMap() {
+				var myLatlng = {lat: 41.890251, lng: 12.492373};
 
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 14,
-          center: myLatlng
-        });
+				var map = new google.maps.Map(document.getElementById('map'), {
+					zoom: 14,
+					center: myLatlng
+				});
 
-        var marker = new google.maps.Marker({
-          position: myLatlng,
-          map: map,
-          title: 'Click to zoom'
-        });
+				var marker = new google.maps.Marker({
+					position: myLatlng,
+					map: map,
+					title: 'Click to zoom'
+				});
 
-        map.addListener('center_changed', function() {
-          // 3 seconds after the center of the map has changed, pan back to the
-          // marker.
-          window.setTimeout(function() {
-            map.panTo(marker.getPosition());
-          }, 3000);
-        });
+				map.addListener('center_changed', function() {
+					// 3 seconds after the center of the map has changed, pan back to the
+					// marker.
+					window.setTimeout(function() {
+						map.panTo(marker.getPosition());
+					}, 3000);
+				});
 
-        marker.addListener('click', function() {
-          map.setZoom(8);
-          map.setCenter(marker.getPosition());
-        });
-      }
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-0LDChA3wQZ9RG0MxQ289VEvJ9Fpgp0c&callback=initMap">
-    </script>
-  </div>
+				marker.addListener('click', function() {
+					map.setZoom(8);
+					map.setCenter(marker.getPosition());
+				});
+			}
+		</script>
+		<script async defer
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-0LDChA3wQZ9RG0MxQ289VEvJ9Fpgp0c&callback=initMap">
+		</script>
+	</div>
 </div>
 
 </body>

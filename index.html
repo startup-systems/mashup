@@ -3,10 +3,10 @@
   <head>
     <title>Actionable Wx</title>
     <link rel="icon" href="favi.png" type="image/x-icon">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
-    <script src="http://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDHvY7Mbw8WPOl4MEonyMOif-ZemS0Oo_A"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDHvY7Mbw8WPOl4MEonyMOif-ZemS0Oo_A"></script>
     <script src="vendor/jquery.geocomplete.js"></script>
-    <!--http://ubilabs.github.io/geocomplete/-->
+    <!--https://ubilabs.github.io/geocomplete/-->
 
     <script type="text/javascript">
 
@@ -25,7 +25,8 @@
     }
 
     function getWeather(){
-      var url = "http://api.openweathermap.org/data/2.5/weather?q="+encodeURIComponent(settings.city)+"&mode=json&appid=1c80be4431474dd95ea746d8ece0a518&units="+settings.units;
+
+      var url = "https://jsonp.afeld.me/?callback=&url=http%3A%2F%2Fapi.openweathermap.org%2Fdata%2F2.5%2Fweather%3Fq%3D"+encodeURIComponent(settings.city)+"%26mode%3Djson%26appid%3D1c80be4431474dd95ea746d8ece0a518%26units%3Dimperial";
       //see http://openweathermap.org/current for api information
       $.getJSON( url, function( data ) {
         var adj = "";
@@ -84,8 +85,8 @@
 
     });
     </script>
-    <link href="http://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
 
     <style type="text/css">
     body,html{

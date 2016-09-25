@@ -11,8 +11,7 @@
 <body>
 <div id="wrapper">
 	<div id="header">
-	</div>
-	<script>
+    <script>
 	$(document).ready(function(){
 		$('#immagine').click(function(){
 			$('#immagine').attr('src', 'http://orig05.deviantart.net/a1df/f/2011/112/8/f/nyan_cat_gif_by_kodiakpaws-d3emqu1.gif');
@@ -20,6 +19,7 @@
 });
 </script>
 </div>
+
 	<div id="main-content">
 		<div id="left-column">
 			<div id="logo">
@@ -36,42 +36,32 @@
 			<div class="sidebar">
 				<h3>About Me</h3>
 				<p>Hi! I am Federico and this is my website for the Startup Systems course!</p>
+        <div id="mapc"></div>
+        <button id="btn">load map</button>
 		</div>
-		<div id="map"></div>
-		<script>
-			function initMap() {
-				var myLatlng = {lat: 41.890251, lng: 12.492373};
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+    var map;
 
-				var map = new google.maps.Map(document.getElementById('map'), {
-					zoom: 14,
-					center: myLatlng
-				});
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -34.397, lng: 150.644},
+        zoom: 8
+      });
+    }
 
-				var marker = new google.maps.Marker({
-					position: myLatlng,
-					map: map,
-					title: 'Click to zoom'
-				});
-
-				map.addListener('center_changed', function() {
-					// 3 seconds after the center of the map has changed, pan back to the
-					// marker.
-					window.setTimeout(function() {
-						map.panTo(marker.getPosition());
-					}, 3000);
-				});
-
-				marker.addListener('click', function() {
-					map.setZoom(8);
-					map.setCenter(marker.getPosition());
-				});
-			}
-		</script>
-		<script async defer
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-0LDChA3wQZ9RG0MxQ289VEvJ9Fpgp0c&callback=initMap">
-		</script>
+    $(document).ready(function(){
+       $("#btn").click(function(){
+        $("#mapc").append('<div id="map"></div>');
+        initMap();
+        });
+     });
+</script>
+        <script async defer
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-0LDChA3wQZ9RG0MxQ289VEvJ9Fpgp0c">
+        </script>
 	</div>
 </div>
-
+</div>
 </body>
 </html>

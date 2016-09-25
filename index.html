@@ -1,34 +1,87 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Mashup</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity=
+    "sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link href="mashup.css" rel="stylesheet" type="text/css"/>
+
   </head>
 
   <body>
-    <p>just one click to find the most popular sushi restaurant in NYC!</p>
-    <button id="stupid-button" type="button">click me</button>
-    <p style="padding = 20px"></p>
-    <p> Most popular sushi restaurant in NYC:</p>
-    <script>
-       document.getElementById("stupid-button").onclick = function(){
-$.ajax(
-{
-url:'https://api.foursquare.com/v2/venues/search?client_id=UXND5G2ZYYO3H4WFH2WV4JZQ1TY4FMFO4IS2QHVOG4514AJN&client_secret=JGMN2DSHY21TLUWYMZ1Z1H5T31URSC30TGYKMWL5UG3HM1EO&v=20160921&near=40.7,-74&query=sushi',
-datatype:'jsonp',
-success:function(result){
-for (var i = 0; i < result.response.venues.length; i++){
-              var name = result.response.venues[i].name;
-              $('body').append('<p>'+name+'</p>');
-            }
-}
-});
-}; 
-    </script>
-  </body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Hello, Sushi!</h1>
+        <p>Find the most popular sushi restaurant here!</p>
+      </div>
 
 
+    <div class = "row">
+      <p style="text-align:center">One click to find the most popular sushi restaurant in NYC!</p>
+      <div class = "col-md-4">
+      </div>
+      <div class="col-md-4" id = "test">
+        <button type="button" class="btn btn-primary" id = "top-10">TOP 10</button>
+        <button type="button" class="btn btn-primary" id = "top-20">TOP 20</button>
+        <button type="button" class="btn btn-primary" id = "top-30">TOP 30</button>
+      </div>
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-4" id= "start">
+      </div>
+      <div class="col-md-4">
+      </div>
+    </div>
+
+    </div>
+  <script>
+  var dataAjax;
+    $('#top-10').on('click', function(){
+      for (var i = 0; i < 10; i++){
+        var name = dataAjax.response.venues[i].name;
+        $('#test').append('<p style = "text-align:center">'+name+'</p>');
+      }
+    });
+
+    $('#top-20').on('click', function(){
+      for (var i = 0; i < 20; i++){
+        var name = dataAjax.response.venues[i].name;
+        $('#test').append('<p style = "text-align:center">'+name+'</p>');
+      }
+    });
+
+    $('#top-30').on('click', function(){
+      for (var i = 0; i < 30; i++){
+        var name = dataAjax.response.venues[i].name;
+        $('#test').append('<p style = "text-align:center">'+name+'</p>');
+      }
+    });
+
+
+    $.ajax({
+          url: 'https://api.foursquare.com/v2/venues/search?client_id=UXND5G2ZYYO3H4WFH2WV4JZQ1TY4FMFO4IS2QHVOG4514AJN&client_secret=JGMN2DSHY21TLUWYMZ1Z1H5T31URSC30TGYKMWL5UG3HM1EO&v=20160921&near=40.7,-74&query=sushi',
+          dasftaType: 'jsonp',
+          success: function(result){
+            //for (var i = 0; i < result.response.venues.length; i++)
+              //var name = result.response.venues[i].name;
+              //$('body').append('<p>'+name+'</p>');
+            console.log('result'+result);
+
+            dataAjax = result;
+            console.log('dataAjax'+dataAjax);
+            console.log(dataAjax);
+          }
+
+        });
+
+  </script>
+</body>
 </html>
 
 

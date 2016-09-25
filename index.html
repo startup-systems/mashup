@@ -1,35 +1,53 @@
-
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Simple Map</title>
-    <meta name="viewport" content="initial-scale=1.0">
-    <meta charset="utf-8">
-    <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #map {
-        height: 100%;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="map"></div>
+<head>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+		<title>fz234</title>
+		<link href="style.css" rel="stylesheet" type="text/css" />
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+</head>
+<body>
+        <div id="mapc"></div>
+        <button id="btn">load map</button>
+		</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
-        });
-      }
+    document.getElementById("btn").onclick = function(){
+        $.ajax({
+           url: 'https://maps.googleapis.com/maps/api/directions/json?origin=75+9th+Ave+New+York,+NY&destination=MetLife+Stadium+1+MetLife+Stadium+Dr+East+Rutherford,+NJ+07073&key=AIzaSyC-0LDChA3wQZ9RG0MxQ289VEvJ9Fpgp0c',
+           dataType: 'json',
+           success: function(result){
+
+            console.log(result);
+           }
+         });
+       };
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYCogv8adGi4TBqBIyxg92AVyeOqP2KAg&callback=initMap"
-    async defer></script>
-  </body>
+<script>
+    var map;
+
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -34.397, lng: 150.644},
+        zoom: 8
+      });
+    }
+
+    $(document).ready(function(){
+       $("#btn").click(function(){
+        $("#mapc").append('<div id="map"></div>');
+        initMap();
+        });
+     });
+</script>
+        <script async defer
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-0LDChA3wQZ9RG0MxQ289VEvJ9Fpgp0c">
+        </script>
+
+	</div>
+</div>
+</div>
+</body>
 </html>
-
-

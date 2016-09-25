@@ -1,8 +1,133 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Mashup</title>
+    <title>Actionable Wx</title>
+    <link rel="icon" href="favi.png" type="image/x-icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDHvY7Mbw8WPOl4MEonyMOif-ZemS0Oo_A"></script>
+    <script src="vendor/jquery.geocomplete.js"></script>
+    <!--https://ubilabs.github.io/geocomplete/-->
+
+    <script type="text/javascript">
+
+
+    //default settings
+    var settings={
+      city: "New York",
+      units: "imperial",
+      unit: "&deg;F",
+      cold: 50,
+      hot: 80
+    };
+
+    function updateSettings(){
+      //set cookie or something
+    }
+
+    function getWeather(){
+      var url = "http://api.openweathermap.org/data/2.5/weather?q="+encodeURIComponent(settings.city)+"&mode=json&appid=1c80be4431474dd95ea746d8ece0a518&units="+settings.units;
+      //see http://openweathermap.org/current for api information
+      $.getJSON( url, function( data ) {
+        var adj = "";
+        if(data.main.temp_max > settings.hot){
+          adj = "hot";
+        }else if (data.main.temp_max < settings.cold) {
+          adj = "cold";
+        }else{
+          adj = "comfortable";
+        }
+
+        var wetness = Math.floor(data.weather[0].id/100);
+
+        switch(wetness) {
+          case 2: adj += "<br />and thundering"; break;
+          case 3: adj += "<br />and damp"; break;
+          case 5: adj += "<br />and wet"; break;
+          case 6: adj += "<br />and icy"; break;
+          default: break;
+        }
+
+        //breaking ss validator @TODO
+        //var danger = Math.floor(data.weather[0].id/10);
+        //if (danger === 90) {
+        //  adj += "<br />and dangerous";
+       //  }
+
+        $("#statement").html("is " + adj );
+        $("#temps").html("(high of " + data.main.temp_max +settings.unit+" and low of "+data.main.temp_min+settings.unit+")");
+
+      });
+    }
+
+    $(function(){
+      getWeather();
+
+      $("#city").geocomplete();  // Option 1: Call on element.
+      $("#city").val(settings.city);
+      $("#city").keypress(function (e) {
+        if (e.which === 13) {
+          $(this).blur();
+        }
+      });
+
+      $("#city").focus(function(){
+        $(this).val("");
+      });
+
+      $("#city").blur(function(){
+        if($(this).val() === ""){
+          $(this).val(settings.city);
+        }
+        settings.city = $(this).val();
+        getWeather();
+      });
+
+    });
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+
+    <style type="text/css">
+    body,html{
+      text-transform: lowercase;
+      font-family: 'Lobster', cursive;
+
+      }
+
+      .container{
+        width:100%;
+        padding:5em 0;
+        text-align: center;
+      }
+      #city{
+        font-family: 'Josefin Sans', sans-serif;
+        border:1px solid #eee;
+        padding:.5em;
+        max-width: 100%;
+        font-size:3em;
+        text-align:center;
+        text-transform: lowercase;
+
+      }
+      .container div{
+        padding:1.5em;
+      }
+
+      #statement{
+        font-size:5em;
+      }
+      #temps{
+        font-family: 'Josefin Sans', sans-serif;
+      }
+
+
+    </style>
   </head>
   <body>
+    <div class="container">
+      <input type="text" id="city" />
+      <div id="statement"></div>
+      <div id="temps"></div>
+    </div>
   </body>
 </html>

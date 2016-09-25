@@ -25,7 +25,7 @@
 
     var search = function(searchText) {
       $.ajax({
-        url : 'http://www.reddit.com/search.json?q=' + searchText + '&sort=new',
+        url : 'https://www.reddit.com/search.json?q=' + searchText + '&sort=new',
         type : 'GET',
         dataType:'json',
         success : function(responseJSON) {

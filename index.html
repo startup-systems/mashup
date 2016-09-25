@@ -4,7 +4,7 @@
     <title>Actionable Wx</title>
     <link rel="icon" href="favi.png" type="image/x-icon">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
-    <script src="http://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDHvY7Mbw8WPOl4MEonyMOif-ZemS0Oo_A"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDHvY7Mbw8WPOl4MEonyMOif-ZemS0Oo_A"></script>
     <script src="vendor/jquery.geocomplete.js"></script>
     <!--https://ubilabs.github.io/geocomplete/-->
 
@@ -25,7 +25,7 @@
     }
 
     function getWeather(){
-      var url = "http://api.openweathermap.org/data/2.5/weather?q="+encodeURIComponent(settings.city)+"&mode=json&appid=1c80be4431474dd95ea746d8ece0a518&units="+settings.units;
+      var url = "https://api.openweathermap.org/data/2.5/weather?q="+encodeURIComponent(settings.city)+"&mode=json&appid=1c80be4431474dd95ea746d8ece0a518&units="+settings.units;
       //see http://openweathermap.org/current for api information
       $.getJSON( url, function( data ) {
         var adj = "";

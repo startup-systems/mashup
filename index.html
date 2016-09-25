@@ -1,8 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Mashup</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
   </head>
   <body>
+    <p>just one click to find the most popular sushi restaurant in NYC!</p>
+
+    <button id="stupid-button" type="button">click me</button>
+    <p style="padding = 20px"></p>
+    Most popular sushi restaurant in NYC:
+
+
   </body>
+
+  <script>
+
+    document.getElementById("stupid-button").onclick = function(){
+        $.ajax({
+          url: 'https://api.foursquare.com/v2/venues/search?client_id=UXND5G2ZYYO3H4WFH2WV4JZQ1TY4FMFO4IS2QHVOG4514AJN&client_secret=JGMN2DSHY21TLUWYMZ1Z1H5T31URSC30TGYKMWL5UG3HM1EO&v=20160921&near=40.7,-74&query=sushi',
+          dataType: 'jsonp',
+          success: function(result){
+            for (var i = 0; i < result.response.venues.length; i++){
+              var name = result.response.venues[i].name;
+              $('body').append('<p>'+name+'</p>');
+            }
+            console.log(result);
+          }
+        });
+      }
+  </script>
+
 </html>

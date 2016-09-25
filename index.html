@@ -28,5 +28,23 @@
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGjuVkx0ICgkjnNAnHkZb6Gr1evz6FJqE&callback=initMap"
     async defer></script>
+    <!--2nd API Inserted Below-->
+    <script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
+    <!-- <script src='js/main.js'></script> -->
+    <script>
+      var url = "https://api.nytimes.com/svc/semantic/v2/geocodes/query.json";
+      url += '?' + $.param({
+        'api-key': "5707cbfa7ea74c0092391181504e5ebb",
+        'country_code': 'US'
+      });
+      $.ajax({
+        url: url,
+      }).done(function(result) {
+        console.log(result);
+      }).fail(function(err) {
+        throw err;
+      });
+
+    </script>>
   </body>
 </html>

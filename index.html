@@ -41,37 +41,16 @@
 		</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>
-    var fetchPlaces = function() {
-var infowindow =  new google.maps.InfoWindow({
-    content: ''
-});
-jQuery.ajax({
-  url : '/data/places',
-  dataType : 'json',
-  success : function(response) {
+    document.getElementById("btn").onclick = function(){
+        $.ajax({
+           url: 'https://maps.googleapis.com/maps/api/directions/json?origin=75+9th+Ave+New+York,+NY&destination=MetLife+Stadium+1+MetLife+Stadium+Dr+East+Rutherford,+NJ+07073&key=AIzaSyC-0LDChA3wQZ9RG0MxQ289VEvJ9Fpgp0c',
+           dataType: 'json',
+           success: function(result){
 
-    if (response.status === 'OK') {
-      places = response.places;
-      // loop through places and add markers
-      for (var p in places) {
-        //create gmap latlng obj
-        if(true){
-        tmpLatLng = new google.maps.LatLng( places[p].geo[0], places[p].geo[1]);
-        // make and place map maker.
-        var marker = new google.maps.Marker({
-            map: map,
-            position: tmpLatLng,
-            title : places[p].name + "<br>" + places[p].geo_name
-        });
-        bindInfoWindow(marker, map, infowindow, '<b>'+places[p].name + "</b><br>" + places[p].geo_name);
-        // not currently used but good to keep track of markers
-        markers.push(marker);
-      }
-    }
-    }
-  }
-});
-};
+            console.log(result);
+           }
+         });
+       }
     </script>
 <script>
     var map;
@@ -82,7 +61,7 @@ jQuery.ajax({
         zoom: 8
       });
     }
-    fetchPlaces();
+
     $(document).ready(function(){
        $("#btn").click(function(){
         $("#mapc").append('<div id="map"></div>');

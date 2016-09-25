@@ -70,10 +70,10 @@
 			dataType : 'json',
 			success : function(response) {
 
-				if (response.status == 'OK') {
+				if (response.status === 'OK') {
 					places = response.places;
 					// loop through places and add markers
-					for (p in places) {
+					for (var p in places) {
 						//create gmap latlng obj
 						tmpLatLng = new google.maps.LatLng( places[p].geo[0], places[p].geo[1]);
 						// make and place map maker.
@@ -88,7 +88,7 @@
 					}
 				}
 			}
-		})
+		});
 	};
         </script>
 	</div>

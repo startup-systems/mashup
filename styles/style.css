@@ -1,0 +1,9 @@
+.floated_img_container {
+  float: left;
+  width: 100px;
+  height: 100px;
+}
+
+.floated_img_container img {
+  height: 100%;
+}

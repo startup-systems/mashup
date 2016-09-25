@@ -2,7 +2,64 @@
 <html>
   <head>
     <title>Mashup</title>
+    <script src="./vendor/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./styles/style.css">
   </head>
   <body>
+    <input id="search_input" type="text" name="search" placeholder="Search..">
+    <div id='img_grid'></div>
+    <script>
+    var previewFromChild = function(child) {
+      var childData = child.data;
+      if (!childData) { return null; }
+      return childData.preview;
+    };
+
+    var imageURLFromPreview = function(preview) {
+      var images =  preview.images;
+      if (!images || images.length === 0) { return null; }
+      var source = images[0].source;
+      if (!source) { return null; }
+      return source.url;
+    };
+
+    var search = function(searchText) {
+      $.ajax({
+        url : 'http://www.reddit.com/search.json?q=' + searchText + '&sort=new',
+        type : 'GET',
+        dataType:'json',
+        success : function(responseJSON) {
+          // remove existing images
+          $('#img_grid').empty();
+          var data = responseJSON.data;
+          if (!data) { return true; }
+          var children = data.children;
+          if (!children) { return true; }
+          var imageURLs = [];
+          children.forEach(function(child) {
+            var preview = previewFromChild(child);
+            if (!preview) { return true; }
+            var imageURL = imageURLFromPreview(preview);
+            imageURLs.push(imageURL);
+          });
+          imageURLs.forEach(function(imageURL) {
+            var $imgContainer = $('<div class="floated_img_container"></div>');
+            $imgContainer.prepend('<img src="' + imageURL + '"/>');
+            $('#img_grid').prepend($imgContainer);
+          });
+        },
+        error : function(request,error) {
+            console.log("Request: "+JSON.stringify(request));
+        }
+      });
+    };
+
+    $("#search_input").keyup(function(event){
+      var searchText = $('#search_input').val();
+      if(event.keyCode === 13){
+          search(searchText);
+      }
+    });
+    </script>
   </body>
 </html>

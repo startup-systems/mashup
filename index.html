@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Simple Map</title>
+    <title>Mashup: IP+Location</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <style>
@@ -11,40 +11,20 @@
         padding: 0;
       }
       #map {
-        height: 100%;
+        height: 50%;
       }
     </style>
+    <h1>[NetID: mw866] CS5356 Homework: Mashup</h1>
   </head>
   <body>
+    <p>This is your approximate location based on your IP address.</p>
     <div id="map"></div>
-    <script>
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
-        });
-      }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGjuVkx0ICgkjnNAnHkZb6Gr1evz6FJqE&callback=initMap"
-    async defer></script>
-    <!--2nd API Inserted Below-->
-    <script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
-    <!-- <script src='js/main.js'></script> -->
-    <script>
-      var url = "https://api.nytimes.com/svc/semantic/v2/geocodes/query.json";
-      url += '?' + $.param({
-        'api-key': "5707cbfa7ea74c0092391181504e5ebb",
-        'country_code': 'US'
-      });
-      $.ajax({
-        url: url,
-      }).done(function(result) {
-        console.log(result);
-      }).fail(function(err) {
-        throw err;
-      });
+    <p>This is your approximate WHOIS record based on your IP address.</p>
+    <table id="whois"></table>
 
-    </script>>
+    <script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
+    <script src='js/main.js'></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGjuVkx0ICgkjnNAnHkZb6Gr1evz6FJqE&callback=main"
+    async defer></script>
   </body>
 </html>

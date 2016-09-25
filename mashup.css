@@ -1,0 +1,9 @@
+.jumbotron {
+background-image:url(sushi-header.jpg);
+margin-top: 20px;
+height:250px;
+}
+.container p{
+  font-size: 20px;
+}
+

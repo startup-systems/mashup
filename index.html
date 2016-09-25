@@ -4,6 +4,7 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <title>Directions service</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
     <style>
       html, body {
         height: 100%;
@@ -88,8 +89,12 @@
         var onChangeHandler = function() {
           calculateAndDisplayRoute(directionsService, directionsDisplay);
         };
-        document.getElementById('start').addEventListener('change', onChangeHandler);
-        document.getElementById('end').addEventListener('change', onChangeHandler);
+        $("#start").change(function() {
+			calculateAndDisplayRoute(directionsService, directionsDisplay);
+		});
+		$("#end").change(function() {
+			calculateAndDisplayRoute(directionsService, directionsDisplay);
+		});
       }
     </script>
     <script async defer

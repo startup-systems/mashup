@@ -1,4 +1,4 @@
 # PROJECT MASHUP
-This project simply display a list of TOP 30 popular sushi restaurant in NYC by using API from Foursquare.
-After cilck on the "click me" button, you can see the top 30 list.
-#END
+This project simply display a list of popular sushi restaurant in NYC by using API from Foursquare.
+You can choose one of the three buttons: "top 30", "top 20", "top 10" to see a list with different length.
+

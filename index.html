@@ -1,7 +1,72 @@
+<!-- Luis Serota 2016 -->
+<!-- Startup Systems and Engineering -->
+
+<!-- Used MapBox and wunderground weather api -->
+<!-- Displays the temperature at the location on the map where clicked -->
+
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Mashup</title>
+    <title>Luis Serota Mashup</title>
+
+    <!-- jQuery for AJAX Calls -->
+    <script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
+
+    <!-- MapBox API -->
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.24.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.24.0/mapbox-gl.css' rel='stylesheet' />
+
+    <style type="text/css">
+    	#map { position:fixed; top:100px;left:0; height:calc(100% - 100px); width:100%; }
+
+    	h1, h6 {
+    		text-align: center;
+    	}
+    </style>
+
+    <h1>Click anywhere on the map to get the temparature at that location</h1>
+
+    <h6>Luis Serota</h6>
+
+    <div id='map'></div>
+
+    <script>
+		mapboxgl.accessToken = 'pk.eyJ1IjoibHVpc3NlIiwiYSI6ImNpdGoyZ3Q1bjA2eGoybm8zdjFrN2RuMmQifQ.xiEfhxmHUIKN3T3frogq4w';
+		var map = new mapboxgl.Map({
+		    container: 'map', // container id
+		    style: 'mapbox://styles/mapbox/streets-v9', //stylesheet location
+		    center: [-74.50, 40], // starting position
+		    zoom: 9 // starting zoom
+		});
+
+		// When the map is closed
+		map.on('click', function(e) {
+
+
+			// Get the city name and state of clicked location
+			$.get("http://api.wunderground.com/api/4a7a94eca1c51547/geolookup/q/" + e.lngLat.lat + "," + e.lngLat.lng + "-122.395234.json", function(data){
+				
+				console.log(data);
+
+				var state = data.location.state;
+				var city = data.location.city.split(' ').join('_'); // replace spaces with underscores
+
+
+				// Get the weather for a US city in JSON
+				$.get("http://api.wunderground.com/api/4a7a94eca1c51547/conditions/q/" + state + "/" + city + ".json", function(response){
+
+					console.log(response);
+
+					alert("The temperature in " + city + ", " + state + " is " + response.current_observation.temp_f + " degrees, but feels like " + response.current_observation.feelslike_f + " degrees;");
+
+				});
+
+			});
+
+		});
+
+	</script>
+
   </head>
   <body>
   </body>

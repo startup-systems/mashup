@@ -1,8 +1,37 @@
 <!DOCTYPE html>
 <html>
+
   <head>
-    <title>Mashup</title>
-  </head>
-  <body>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
+      <script type="text/javascript">
+        $.ajax({
+        url: 'https://kgsearch.googleapis.com/v1/entities:search?query=taylor+swift&key=AIzaSyA-g40idgBLYC8JL1BcuHZtHW_gu-_Pxuk&limit=1&indent=True',
+        dataType: 'json',
+        success: function(data){
+          alert(data.itemListElement[0].result.detailedDescription.articleBody);
+          $("#photo").attr("src",data.itemListElement[0].result.image.contentUrl);
+        }
+      });
+        $(document).ready(function(){
+        $("#getResult").click(function(){
+            $.get("https://kgsearch.googleapis.com/v1/entities:search?query=taylor+swift&key=AIzaSyA-g40idgBLYC8JL1BcuHZtHW_gu-_Pxuk&limit=1&indent=True",
+                function(data,status){
+                    alert(data.itemListElement[0].result.detailedDescription.articleBody);
+                    $("#photo").attr("src",data.itemListElement[0].result.image.contentUrl);
+                });
+        });
+        });
+      </script>
+
+      <title>Mashup</title>
+    </head>
+
+    <body>
+    <div style="text-align: center">
+        <img id="photo" src="http://xiangrenkai.com/img/avatar-rx.jpg" alt="Foo Bar">
+        <br>
+        <button id="getResult" style="">Learn Something About Taylor Swift!</button>
+    </div>
   </body>
+
 </html>

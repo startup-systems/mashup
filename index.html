@@ -37,7 +37,7 @@
 
 	</style>
 	<title>Mashup</title>
-	<script src= "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">></script>
+	<script src= "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 
 </head>
@@ -67,8 +67,8 @@
 	<script>
 		$("button").click(function(){
 			
-			var ct = "cornell tech"
-			var url = "https://maps.googleapis.com/maps/api/geocode/json?address=cornell%20tech&key=AIzaSyDTXx7GO2Vj8wQXquKWroznNUJXBIJWHqA"
+			var ct = "cornell tech";
+			var url = "https://maps.googleapis.com/maps/api/geocode/json?address=cornell%20tech&key=AIzaSyDTXx7GO2Vj8wQXquKWroznNUJXBIJWHqA";
 			$.getJSON(url,function(data){
 				alert("hi"+data.results[0].formatted_address);
 			});

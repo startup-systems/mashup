@@ -12,7 +12,7 @@ $(document).ready(function(){
     $("button").click(function(){
       if($('#results').find('tr').length>=20){
         $("#results").empty();
-        $('#results').append('<thead><tr><th>#</th><th>Name</th><th>Artist</th><th>Preview</th></tr></thead><tbody><tr></tr></tbody>')
+        $('#results').append('<thead><tr><th>#</th><th>Name</th><th>Artist</th><th>Preview</th></tr></thead><tbody><tr></tr></tbody>');
       }
         $.ajax({url: 'https://api.spotify.com/v1/search?q='+$("#search_text").val()+'&type=track&market=US',type:'GET',dataType: 'json',success: function(result){
           for (var i=0;i<result.tracks.items.length;i++){
@@ -45,11 +45,6 @@ $(document).ready(function(){
       <th>Preview</th>
     </tr>
   </thead>
-  <tbody>
-    <tr>
-      
-    </tr>
-  </tbody>
 </table>
 </div>
 

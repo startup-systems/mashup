@@ -1,20 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Utsav's Homepage</title>
+	<title>Utsav's homepage</title>
 	<link rel="stylesheet" type="text/css" href="stylesheet.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100i,300,400,500,500i,700,700i" rel="stylesheet">
-
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script>
+var count=0;
       $.ajax({
         url:'https://api.spotify.com/v1/artists/2ye2Wgw4gimLv2eAKyk1NB/top-tracks?country=SE',
         dataType: 'json',
-        success: function(result){	
-          for (var i = 0; i < result.tracks.length; i++){
+        success: function(result){
+        	$('#toptracksTable').append('<tr><th>Song Name</th><th>Preview Song</th><th>Album Artwork</th></tr>');
+          for (var i = 0; i < result.tracks.length; i++)
+          {
+          	count=count+1;
             var songname = result.tracks[i].name;
-            $('#TopTracks').append('<li class = "intro">' + songname + '</li>');
+            var preview = result.tracks[i].preview_url;
+            var album_cover = result.tracks[i].album.images[0].url;
+            $('#toptracksTable').append('<tr><td>' + songname + '</td><td><audio controls><source src="'+preview+'"></audio></td><td><img src="'+album_cover+'" alt="Album Cover" class="albumcover" id="'+i+'" style="width:30px; height=30px;"></td></tr>');
           }
+          	var imgalbum = document.getElementsByClassName('albumcover');
+	console.log(count);
+
+for (var i=0;i<imgalbum.length;i++)
+{
+	var image = document.getElementById(i);
+	image.onclick=function(){
+		modal.style.display = "block";
+    	modalImg.src = this.src;
+    	captionText.innerHTML = this.alt;
+}
+}
+
         }
       });
     </script>
@@ -31,12 +49,12 @@
   			<span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
 
   			<!-- Modal Content (The Image) -->
-  			<img class="modal-content" id="img01" alt="Utsav U Vakil" src="UtsavUVakil.jpg">
+  			<img class="modal-content" id="img01">
 
   			<!-- Modal Caption (Image Text) -->
   			<div id="caption"></div>
 		</div>
-		<script type="text/javascript" src="scripts.js"></script>
+		
 		<figcaption class="caption" id="imagecaption" >Net ID: uuv2</figcaption>
 	</figure>
 	<h1 class="nameUtsav">Utsav U Vakil</h1>
@@ -49,11 +67,14 @@
 </div>
 
 <div>
-	<h1 class="introduction"> My favorite Artist Metallica and their top tracks on Spotify</h1>
-	<div id="TopTracks"> </div>
-</div>
 
+	<h1 class="introduction"> My favorite Artist <a href="https://open.spotify.com/artist/2ye2Wgw4gimLv2eAKyk1NB">Metallica</a> and their top tracks on Spotify</h1>
+	<div id="TopTracks" style="width: 100%;"> 
+  <table id="toptracksTable">
+    
+  </table></div>
+</div>
+<script type="text/javascript" src="scripts.js"></script>
 </body>
 </html>
-
 

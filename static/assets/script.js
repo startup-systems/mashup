@@ -20,10 +20,10 @@ function changeContent() {
 	    maptype: "satellite",
 	  };
 	  var map = new google.maps.Map(mapCanvas, mapOptions);
-	};
+	}
 
 // soundcloud ---------------;
-
+;
 SC.get('/shimieshimshim').then(function(tracks){
   alert('Latest track: ' + tracks[0].title);
 });

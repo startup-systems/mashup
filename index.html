@@ -14,6 +14,10 @@
                 height:100%;
             }
         </style>
+        <button id="family">Go to South Korea</button>
+        <button id="nextStop">Go to Cape Town</button>
+        <button id="finalStop">Go to San Francisco</button>
+        <button id="NY">Go back home</button>
   </head>
   <body>
       <div id="map"></div>
@@ -26,7 +30,7 @@
               });
           }
           function newLoc(newLat, newLng) {
-              map.setToCenter({
+              map.setCenter({
                   lat:newLat,
                   lng:newLng
               });
@@ -44,6 +48,9 @@
               $("finalStop").on('click', function () {
                   newLoc(37.7749, 122.4194);
               });
+              $("NY").on('click', function () {
+                  newLoc(40.730610, -73.934);
+              });
           });
       </script>
 
@@ -53,6 +60,7 @@
          }
       });
 
+      <script src="//code.jquery.com/jquery-1.10.2.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnMTPiISIga4Best6gdBp9kU9HPRpv4xs&callback&callback=initMap" async defer></script>
   </body>

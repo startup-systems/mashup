@@ -1,8 +1,48 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Mashup</title>
+<head>
+  <title>Mashup</title>
+<style>
+           #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
+    <script>
+      var map;
+
+      function initialize() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 2,
+          center: new google.maps.LatLng(40,-74),
+          mapTypeId: 'terrain'
+        });
+
+        var script = document.createElement('script');
+        script.src = 'https://developers.google.com/maps/documentation/javascript/tutorials/js/earthquake_GeoJSONP.js';
+        document.getElementsByTagName('head')[0].appendChild(script);
+      }
+
+      window.eqfeed_callback = function(results) {
+        for (var i = 0; i < results.features.length; i++) {
+          var coords = results.features[i].geometry.coordinates;
+          var latLng = new google.maps.LatLng(coords[1],coords[0]);
+          var marker = new google.maps.Marker({
+            position: latLng,
+            map: map
+          });
+        }
+      }
+    </script>
   </head>
-  <body>
-  </body>
+
+</head>
+<body>
+
+   <div id="map"></div>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoS7s_eFm5GDNySYRIU54ay27a5NslokU&callback=initialize">
+    </script>
+
+</body>
 </html>

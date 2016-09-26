@@ -8,16 +8,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://apis.google.com/js/client.js?onload=onClientLoad" type="text/javascript"></script>
 <script>
-  function onYouTubeApiLoad() {
+function onYouTubeApiLoad() {
     // This API key is intended for use only in this lesson.
     // See https://goo.gl/PdPA1 to get a key for your own applications.
     gapi.client.setApiKey('AIzaSyCvLwyHBdQ19KHInmzHvk61TIL2e41v7ik');
 
     //search();
 }
-function onSearchResponse(response) {
-    showResponse(response);
-}
+
 function showResponse(response) {
     $("#result").empty();
     for (var i =0;i<5;i++){
@@ -32,15 +30,24 @@ function showResponse(response) {
     //var responseString = JSON.stringify(response, '', 2);
     //document.getElementById('response').innerHTML += responseString;
 }
+function onSearchResponse(response) {
+    showResponse(response);
+}
+
   function searchYoutube(input){
+
+    var xmlhttp;
+    xmlhttp=new XMLHttpRequest();
+    xmlhttp.open("GET","https://developers.google.com/apis-explorer/#p/youtube/v3/youtube.search.list?part=snippet&order=viewCount&q=skateboarding+dog&type=video&videoDefinition=high",true);
+    xmlhttp.send();
+
+
     gapi.client.load('youtube', 'v3', onYouTubeApiLoad);
     var request = gapi.client.youtube.search.list({
         part: 'snippet',
         q: input
     });
     request.execute(onSearchResponse);
-
-
   }
 
 </script>
@@ -56,6 +63,8 @@ $(document).ready(function(){
   $("button").click(function(){
     var input = $("input:text").val();
     //alert(input);
+
+
     searchYoutube(input);
     //searchYoutube(input);
     //alert($("input:text").val());

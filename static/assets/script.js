@@ -6,10 +6,9 @@ function changeContent() {
       document.getElementById("change").innerHTML = this.responseText;
     }
   };
-  xhttp.open("GET", "ajax_info.txt", true);
+  xhttp.open("GET", "readme.md", true);
   xhttp.send();
 }
-
 
 
 // google maps --------------

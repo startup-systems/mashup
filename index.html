@@ -112,21 +112,18 @@
                 
                 directionsDisplay.setDirections(response);
                 
-                var route, routeSegment, summaryPanel;
-                route = response.routes[0];
-                
-                summaryPanel = document.getElementById('directions-panel');
+                var route = response.routes[0];
+                var summaryPanel = document.getElementById('directions-panel');
                 summaryPanel.innerHTML = '';
       // For each route, display summary information.
-//                var routeSegment;
                 
-                for (var i = 0; i < route.legs.length; i++) {
+                for (var i = 1; i < route.legs.length+1; i++) {
                     
-                    routeSegment = i + 1;
-                    summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +'</b><br>';
-                    summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
-                    summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
-                    summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
+//                    var routeSegment = i + 1;
+                    summaryPanel.innerHTML += '<b>Route Segment: ' + i +'</b><br>';
+                    summaryPanel.innerHTML += route.legs[i-1].start_address + ' to ';
+                    summaryPanel.innerHTML += route.legs[i-1].end_address + '<br>';
+                    summaryPanel.innerHTML += route.legs[i-1].distance.text + '<br><br>';
                 }
             } else {
                 window.alert('Directions request failed due to ' + status);

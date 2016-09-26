@@ -51,10 +51,29 @@ I have added a function to load random picture , and fixed some problem with the
       }
 
       weatherData.temperature.innerHTML = weatherData.temperatureValue + weatherData.units;   
-      console.log(""+weatherData.temperatureValue)
-      console.log( weatherData.units)
+//      console.log(""+weatherData.temperatureValue);
+//      console.log( weatherData.units);
     }
+    
+    function loadBackground(lat, lon, weatherTag) {
+        var script_element = document.createElement('script');
+
+        script_element.src = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=13e395b96b7b8c5937454b23c895655c&lat=" + lat + "&lon=" + lon + "&accuracy=1&tags=" + weatherTag + "&sort=relevance&extras=url_l&format=json";
+
+        document.getElementsByTagName('head')[0].appendChild(script_element);
+      }
       
+      function jsonFlickrApi(data){
+        if (data.photos.pages > 0){
+          var ind = Math.floor((Math.random() * data.photos.photo.length ) + 1);
+//          console.log("" + ind)
+          var photo = data.photos.photo[ind];
+          document.querySelector("body").style.backgroundImage = "url('" + photo.url_l + "')";
+        }
+        else{
+          document.querySelector("body").style.backgroundImage = "url('https://fourtonfish.com/tutorials/weather-web-app/images/default.jpg')";
+        }
+      }
       
       
     function getLocationAndWeather(){
@@ -96,25 +115,7 @@ I have added a function to load random picture , and fixed some problem with the
       
       
       
-      function loadBackground(lat, lon, weatherTag) {
-        var script_element = document.createElement('script');
-
-        script_element.src = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=13e395b96b7b8c5937454b23c895655c&lat=" + lat + "&lon=" + lon + "&accuracy=1&tags=" + weatherTag + "&sort=relevance&extras=url_l&format=json";
-
-        document.getElementsByTagName('head')[0].appendChild(script_element);
-      }
       
-      function jsonFlickrApi(data){
-        if (data.photos.pages > 0){
-          var ind = Math.floor((Math.random() * data.photos.photo.length ) + 1);
-          console.log("" + ind)
-          var photo = data.photos.photo[ind];
-          document.querySelector("body").style.backgroundImage = "url('" + photo.url_l + "')";
-        }
-        else{
-          document.querySelector("body").style.backgroundImage = "url('https://fourtonfish.com/tutorials/weather-web-app/images/default.jpg')";
-        }
-      }
       
       getLocationAndWeather();
       

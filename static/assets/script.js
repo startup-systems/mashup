@@ -1,7 +1,16 @@
 
-function changeColor() {
-    document.getElementById("color").style.color = "blue";
+function changeContent() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("change").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "ajax_info.txt", true);
+  xhttp.send();
 }
+
+
 
 // google maps --------------
 	function myMap() {

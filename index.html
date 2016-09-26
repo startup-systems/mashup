@@ -40,12 +40,11 @@
               });
               $("nextStop").on('click', function () {
                   newLoc(48.1293954, 11.55663);
-              }):
-                  $("finalStop").on('click', function () {
-                      newLoc(55.74972, 37.632495);
-                  });
-
               });
+              $("finalStop").on('click', function () {
+                  newLoc(55.74972, 37.632495);
+              });
+          });
       </script>
 
       $.ajax('index.html', {

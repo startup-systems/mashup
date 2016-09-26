@@ -42,3 +42,6 @@ Within this repository directory in your [virtual machine](https://github.com/st
     ```bash
     npm test -s
     ```
+## Get Album Info
+
+Using Spotify API, get the album cover, artist, track names of an album according to a given album ID.

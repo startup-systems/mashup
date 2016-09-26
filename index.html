@@ -99,16 +99,16 @@
                 $.each(data, function() {
                     for (i = 0; i < 3; i++) {
                         
-                        $('#start').append('<option value="' + data.results[i]["city"] + '">' + data.results[i]["city"] + '</option>');
+                        $('#start').append('<option value="' + data.results[i].city + '">' + data.results[i].city + '</option>');
 //                        $("#start").val(data.results[i]["city"]);
 //                        $("#end").val(data.results[i]["city"]);
-                        $('#end').append('<option value="' + data.results[i]["city"] + '">' + data.results[i]["city"] + '</option>');
+                        $('#end').append('<option value="' + data.results[i].city + '">' + data.results[i].city + '</option>');
                     }
                 });
             });
             
-            var directionsService = new google.maps.DirectionsService;
-            var directionsDisplay = new google.maps.DirectionsRenderer;
+            var directionsService = new (google).maps.DirectionsService;
+            var directionsDisplay = new (google).maps.DirectionsRenderer;
             var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 6,
                 center: {lat: 47.05, lng: -87.65}

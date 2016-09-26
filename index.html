@@ -10,6 +10,11 @@
   </head>
   <body>
     <h3>Mashup_google map</h3>
+      Enter Address:<br>
+      <input type="text" id="location"><br>
+      <input type="button" value="Submit" onclick="initMap()"/>
+  
+
     <div id="map"></div>
     
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
@@ -17,6 +22,7 @@
      <script type="text/javascript">
         
          function initMap() {
+                  var address = document.getElementById("address").value;
                   var uluru = {lat: 40.7128, lng: -74.0059};
                   var geocoder = new google.maps.Geocoder();
                   var map = new google.maps.Map(document.getElementById('map'), {

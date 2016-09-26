@@ -1,8 +1,26 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Mashup</title>
-  </head>
-  <body>
-  </body>
-</html>
+d>
+    <title>AJAX example</title>
+	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+		  </head>
+		    <body>
+			  	<img id="imgsrc">
+				  	<h1 id="info"></h1> 
+					  	<p id="tracks"></p>
+						    <script>
+							      $.ajax({
+								          url: "https://api.spotify.com/v1/albums/0sNOF9WDwhWunNAHPD3Baj",
+										          dataType: 'json',
+												          success: function(result){
+														          	var name = result.artists[0].name;
+																	           	$("#info").append(name);           		
+																				           	result.tracks.items.forEach(function(item){
+																							           		var name = item.name;
+																											           		$("#tracks").append(name+"<br>");
+																															           	});
+																																		        	var images = result.images[0].url;
+																																					        	$("#imgsrc").attr("src", images);
+																																								        }
+																																										      });
+																																											      </script>
+																																												    </body>
+																																													</html>

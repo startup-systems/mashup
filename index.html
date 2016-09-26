@@ -5,25 +5,16 @@
   </head>
   <body>
   </body>
-   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
-      <script type="text/javascript">
-        $.ajax({
-        url: "https://maps.googleapis.com/maps/api/js?key=AIzaSyByAcKWzArzxOwNRHIRNZOuJlkN9uZ7xOw&callback=initMap",
-        dataType: 'json',
-        success: function(data){
-          alert(data.itemListElement[0].result.detailedDescription.articleBody);
-          $("#photo").attr("src",data.itemListElement[0].result.image.contentUrl);
-        }
-      });
-        $(document).ready(function(){
-        $("#getResult").click(function(){
-            $.get("https://maps.googleapis.com/maps/api/js?key=AIzaSyByAcKWzArzxOwNRHIRNZOuJlkN9uZ7xOw&callback=initMap",
-                function(data,status){
-                    alert(data.itemListElement[0].result.detailedDescription.articleBody);
-                    $("#photo").attr("src",data.itemListElement[0].result.image.contentUrl);
-                });
+  <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
         });
-        });
-      </script>
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByAcKWzArzxOwNRHIRNZOuJlkN9uZ7xOw&callback=initMap"
+    async defer></script>
   
 </html>

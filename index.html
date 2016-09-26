@@ -28,7 +28,7 @@
      <script type="text/javascript">
         var i;
         var addressInfo;
-        var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=51.508742,-0.120850&key=AIzaSyA7Q_qNP_cN0nEZ09tp1B6JvUciuA7LuLw",
+        var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=51.508742,-0.120850&key=AIzaSyA7Q_qNP_cN0nEZ09tp1B6JvUciuA7LuLw";
         $.getJSON(url, function (data) {     
         for (i = 0; i < data.results.length; i++) {
             addressInfo[i] = data.results[i].formatted_address;

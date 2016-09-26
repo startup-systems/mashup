@@ -1,23 +1,40 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <!---Bootstrap--->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
     <!---Angular--->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <title>Mashup</title>
-    
+    <!-- Custom-->
+    <link href="css/style.css" rel="stylesheet"/>
     <script src="js/app.js"></script>
   </head>
   <body ng-app="myApp">
-    <div ng-controller="mainCtrl"><h1>Reddit Funny Posts</h1>
-    <ul>
-      <li ng-repeat="story in stories">
-        <div><img ng-src="{{story.thumbnail}}" alt="image/reddit.jpg"/>
-          <a ng-href="{{story.url}}">{{story.title}}</a>
+    <div ng-controller="mainCtrl">
+
+    
+    <div class="container-fluid">
+        <div class="row text-center">
+            <h2 class="headermessage">Funny Reddit Posts</h2>
         </div>
-      </li>
-    </ul></div>
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb" ng-repeat="story in stories">
+                <a class="thumbnail" ng-href="{{story.url}}">
+                    <img class="img-responsive" ng-src="{{story.thumbnail || 'image/reddit.jpg'}}">
+                </a>
+              <a ng-href="{{'//reddit.com' + story.permalink}}"><p>{{story.title}}</p></a>
+            </div>
+        </div>
+    </div>        
+    
+    </div>
   </body>
 </html>
+<!---
+Source:
+http://www.prepbootstrap.com/bootstrap-template/responsive-image-tiles
+--->

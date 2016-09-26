@@ -1,8 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Mashup</title>
-  </head>
-  <body>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="/style.css">
+  <meta name="viewport" content="width=device-width">
+  <title>Home Page of kristenwang</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <script>
+ $.ajax({
+         url:'https://api.spotify.com/v1/albums/1gMxiQQSg5zeu4htBosASY',
+         dataType: 'json',
+         success: function(result){ 
+           var album = result.external_urls.spotify;
+             var img = result.images[0].url;
+             $('#Album').append('<a href="'+album+'"><img class="album" src="'+img+'" alt="Album" style="width:200px;height:200px;"></a>');
+           for (var i = 0; i < result.tracks.items.length; i++){
+             var songname = result.tracks.items[i].name;
+             var number = result.tracks.items[i].track_number;
+             var link = result.tracks.items[i].external_urls.spotify;
+             $('#Album').append('<div class = "tracks" >' + number +'. '+ '<a class="link" href="'+link+'">'+songname + '</a></div>');
+           }
+         }
+       });
+  </script>
+</head>
+  <h3>Home Page</h3>
+  <p></p>
+<body>
+<div class="photo">
+  <img src="https://kristenwang.github.io/files/chuyang_wang.jpg" alt="photo" style="width:150px;height:150px;">
+  <id>NetID: cw777</id>
+</div>
+  <div class="bio">
+  <h4>Biography:</h4>
+  <p> Hi, I'm <strong>Chuyang Wang</strong></p>
+  <p> Studying<strong>Connective Media</strong>@ Cornell Tech </p>
+  <p> I was born in Xi'an, China, moved to Shanghai for college, and now in<strong>New York</strong></p>
+  <p> Love travleing, swimming, movies....</p>
+</div>
+   <div id="Album"></div>
+</body>
 </html>

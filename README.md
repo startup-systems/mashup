@@ -1,5 +1,8 @@
 # Mashup project
 
+Project description:  Using Google Maps API to create a UI to place, markers on places in the map.
+
+......
 This project is open-ended! Requirements:
 
 * Build a site that uses data from at least one external API in an interesting, interactive way.

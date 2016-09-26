@@ -14,7 +14,6 @@
         By Boting Li</p>
     </section>
     
-    
     <script>
       var weatherData = {
       city: document.querySelector("#city"),
@@ -23,6 +22,8 @@
       temperatureValue: 0,
       units: " C"
     };
+      
+      
       
       function switchUnits(){
       if (weatherData.units == " C"){
@@ -38,6 +39,8 @@
       console.log(""+weatherData.temperatureValue)
        console.log( weatherData.units)
     }
+      
+      
       
     function getLocationAndWeather(){
      if (window.XMLHttpRequest){
@@ -76,6 +79,8 @@
     }         
   }
       
+      
+      
       function loadBackground(lat, lon, weatherTag) {
         var script_element = document.createElement('script');
 
@@ -86,7 +91,9 @@
       
       function jsonFlickrApi(data){
         if (data.photos.pages > 0){
-          var photo = data.photos.photo[1];
+          var ind = Math.floor((Math.random() * data.photos.photo.length ) + 1);
+          console.log("" + ind)
+          var photo = data.photos.photo[ind];
           document.querySelector("body").style.backgroundImage = "url('" + photo.url_l + "')";
           //document.querySelector("#image-source").setAttribute("href", "http://www.flickr.com/photos/" + photo.owner + "/" + photo.id);
         }

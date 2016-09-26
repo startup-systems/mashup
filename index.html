@@ -30,15 +30,14 @@
           }
         
         $.ajax({
-            url: "https://maps.googleapis.com/maps/api/geocode/json?address="+location+"&key=AIzaSyBNNRYFdgYqPMPaWvgFjZD9dAeR06Kii1c";
-            type: "GET",
+            url: "https://maps.googleapis.com/maps/api/geocode/json?address="+location+"&key=AIzaSyBNNRYFdgYqPMPaWvgFjZD9dAeR06Kii1c",
             success: function (data) {
                 var result = JSON.parse(data);
                 //Alert the city
                 alert(result.results[0].geometry);
             },
             error: function () {
-                alert("code not found");
+                alert("Page not found");
             }
         });
       }

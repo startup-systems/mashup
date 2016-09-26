@@ -1,4 +1,8 @@
 
+function changeColor() {
+    document.getElementById("color").style.color = "blue";
+}
+
 // google maps --------------
 	function myMap() {
 	  var mapCanvas = document.getElementById("map");

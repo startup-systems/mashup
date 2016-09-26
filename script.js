@@ -13,14 +13,14 @@ $(document).ready(function() {
             console.log(div);
             $( "<p class=\"red\">" ).text("The github username is: " + json.login ).appendTo(div);
             $( "<a>").attr("href", json.url).appendTo(div);
-            $("<p class=\"red\">").text('Details').appendTo("a")
+            $("<p class=\"red\">").text('Details').appendTo("a");
         })
         .fail(function( xhr, status, errorThrown ) {
             alert( "Sorry, there was a problem!" );
             console.log( "Error: " + errorThrown );
             console.log( "Status: " + status );
             console.dir( xhr );
-        })
+        });
         // .always(function( xhr, status ) {
         //     alert( "The request is complete!" );
         // });

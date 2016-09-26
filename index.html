@@ -20,16 +20,20 @@ var count=0;
             var songname = result.tracks[i].name;
             var preview = result.tracks[i].preview_url;
             var album_cover = result.tracks[i].album.images[0].url;
-            $('#toptracksTable').append('<tr><td>' + songname + '</td><td><audio controls><source src="'+preview+'"></audio></td><td><img src="'+album_cover+'" alt="Album Cover" class="albumcover" id="'+i+'" style="width:30px; height=30px;"></td></tr>');
-            var image = document.getElementById(i);
+            $('#toptracksTable').append('<tr><td>' + songname + '</td><td><audio controls><source src="'+preview+'"></audio></td><td><img src="'+album_cover+'" alt="Album Cover" class="albumcover" id="'+i+'" style="width:30px; height=30px;" onclick="document.getElementById('+i+').function(){modal.style.display = "block; modalImg.src = this.src; captionText.innerHTML = this.alt"};"></td></tr>');
+           /* var image = document.getElementById(i);
             image.onclick=function(){
-            modal.style.display = "block";
-            modalImg.src = this.src;
-            captionText.innerHTML = this.alt;
-            };
+            
+            };*/
           }
         }
       });
+      /*function albumCover(image)
+      {
+          modal.style.display = "block";
+          modalImg.src = this.src;
+          captionText.innerHTML = this.alt; 
+      }*/
     </script>
 </head>
 <body>

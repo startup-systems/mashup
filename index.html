@@ -126,6 +126,13 @@ Refernces: http://stackoverflow.com/questions/11147803/how-to-use-zip-code-inste
     $( "#goButton" ).click(function() {
           var zcode = $( "#zip" ).val();
           //alert(zcode);
+          $.ajax({
+            url: "demo_test.txt",
+            success: function(result){
+              //Dummy function 
+            }
+          });
+
           codeAddress(zcode);
     });
 

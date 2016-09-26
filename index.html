@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Mashup</title>
     <style>
       #map {
         height: 400px;
@@ -12,7 +13,7 @@
     <h3>Mashup_google map</h3>
       Enter Address:<br>
       <input type="text" id="location"><br>
-      <input type="button" value="Submit" onclick="initMap()"/>
+      <input type="button" value="Submit" onclick="Mapinit()"/>
 
     
     <div id="map"></div>
@@ -35,8 +36,8 @@
     
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script type="text/javascript">  
-      function initMap(){
-        var address = document.getElementById("address").value;     
+      function Mapinit(){
+        var address = document.getElementById("location").value;     
         $.ajax({
             url: "https://maps.googleapis.com/maps/api/geocode/json?address="+location+"&key=AIzaSyBNNRYFdgYqPMPaWvgFjZD9dAeR06Kii1c",
             success: function (data) {

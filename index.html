@@ -1,8 +1,106 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <title>Mashup</title>
-  </head>
-  <body>
-  </body>
+    
+    <head>
+        <title>MashUp HW C.Zhang</title>
+        <script src="jquery-1.11.3.min.js"></script>
+        <script src="http://maps.googleapis.com/maps/api/js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+                <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+                <script type="text/javascript">
+                    var LatLng;
+                    $(document).ready(function() {
+                                      $("#CS").click(function(){
+                                                     console.log("CS clicked");
+                                                     $("#INTRO").html("Wow~ You start CS in Cornell?! Top 5 CS School!");
+                                                     });
+                                      $("#CM").click(function(){
+                                                     $("#INTRO").html("Gonna be a data scientist soon?");
+                                                     });
+                                      $("#MBA").click(function(){
+                                                      $("#INTRO").html("Ready to manage 200+ department soon?");
+                                                      });
+                                      $("#LLM").click(function(){
+                                                      $("#INTRO").html("Billable hour rate: 1000 USD/hr !");
+                                                      });
+                                      
+                                      $("#Button_submit").click(function(){
+                                                                
+                                                                
+                                                                var searchdata= JSON.parse(localStorage.getItem("searchresult"));
+                                                                var school=$("#address").val();
+                                                                var yourname=$("#username").val();
+                                                                //convert address to GPS location
+                                                                //key is registered under: chenz915@gmail.com
+                                                                //please make you own key
+                                                                //if you want to use this code
+                                                                
+                                                                $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?address='+school+'&key=AIzaSyD0OpxP2jgLqKimr6KQumSEDmLxALX_V40', null, function (data) {
+                                                                          var p = data.results[0].geometry.location
+                                                                          LatLng=new google.maps.LatLng(p.lat, p.lng);
+                                                                          console.log("your school is"+school+"its gps"+LatLng);
+                                                                          $("#GEOCODE").html(yourname + ", your address GPS is " + LatLng);
+                                                                          });
+                                                                
+                                                              
+                                                                });
+                                      
+                                      
+                                     
+                                     
+                                      $("#Button_maps").click(function(){
+                                                              console.log("buttonmaps clicked");
+                                                              
+                                         // Create a map object and specify the DOM element for display.
+                                         var map = new google.maps.Map(document.getElementById('googleMap'), {
+                                                                       center: LatLng,
+                                                                       scrollwheel: false,
+                                                                       zoom: 14
+                                                                       });
+                                                                       
+                                                                       // Create a marker and set its position.
+                                                                       var marker = new google.maps.Marker({
+                                                                                                           map: map,
+                                                                                                           position: LatLng,
+                                                                                                           title: 'Hello World!'
+                                                                                                           });
+                                                              });
+                                      });
+                                      
+                
+                    </script>
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJnVNr6Z0VZakSemow6cMh103Ksv8Mzz4&callback=initMap"
+                    async defer></script>
+                </head>
+    
+    <body>
+        
+        <h1>Geocode API and Google Map APT</h1>
+        
+        Your Name: <input name="username" type=text size="15" id="username"/>
+        <br/>
+        
+        Your Live at: <input name="address" type=text size="30" id="address"/>
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Your Major at Cornell Tech?
+                <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <li><a id="CS" href="#">CS</a></li>
+                <li><a id="CM" href="#">CM</a></li>
+                <li><a id="LLM" href="#">LLM</a></li>
+                <li><a id="MBA" href="#">MBA</a></li>
+            </ul>
+        </div>
+        <div id="INTRO"></div>
+        <div id="GEOCODE"></div>
+        <br/>        Your Live At:(Click the icon to zoom in) <div id="location"></div>
+        <div id="googleMap" style="width:500px;height:380px;"></div>
+        <p>
+        <button id="Button_submit">GEOCODE ADDRESS</button>
+        <button id="Button_maps">Get the Map!</button>
+        </p>
+        <div id="status"></div>
+        
+    </body>
 </html>

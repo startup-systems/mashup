@@ -60,7 +60,7 @@ font-size: 0.5em;
 
 
 <footer>
-	<p>Powered by <a href="http://flickr.com/service/api/">Flickr</a> and <a href="http:openweathermap.org">Openweathermap.org</a>. Created by <a href="https://twitter.com/mmaeverick">@mmaeverick</a>. <a id="image-source" href= "#"> Image source</a>.</p>
+	<p>Powered by <a href="http://flickr.com/service/api/">Flickr</a> and <a href="http://openweathermap.org">Openweathermap.org</a>. Created by <a href="https://twitter.com/mmaeverick">@mmaeverick</a>. <a id="image-source" href= "#"> Image source</a>.</p>
 </footer>
 <script>
 var weatherData = {
@@ -72,11 +72,11 @@ var weatherData = {
 };
 
 function roundTemperature (val){
-	return Math.round(val)
+	return Math.round(val);
 }
 
 function switchUnits(){
-	if (weather.units == "°C"){
+	if (weather.units === "°C"){
 		weatherData.temperatureValue = roundTemperature(weatherData.temperatureValue * 9/5 + 32);
 		weatherData.units = "°F";
 	}
@@ -86,6 +86,14 @@ function switchUnits(){
 	}
 
 	weatherData.temperature.innerHTML = weatherData.temperatureValue + weatehrData.units + ",";
+}
+
+function loadBackground(lat, lon, weatherTag) {
+  var script_element = document.createElement('script');
+
+  script_element.src = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=e2357e4f59c9cb46f93ae406026ba6d3&lat=" + lat + "&lon=" + lon + "&accuracy=1&tags=" + weatherTag + "&sort=relevance&extras=url_l&format=json";
+
+  document.getElementsByTagName('head')[0].appendChild(script_element);
 }
 
 function getLocationAndWeather(){
@@ -125,13 +133,6 @@ function getLocationAndWeather(){
   }           
 }
 
-function loadBackground(lat, lon, weatherTag) {
-  var script_element = document.createElement('script');
-
-  script_element.src = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=e2357e4f59c9cb46f93ae406026ba6d3&lat=" + lat + "&lon=" + lon + "&accuracy=1&tags=" + weatherTag + "&sort=relevance&extras=url_l&format=json";
-
-  document.getElementsByTagName('head')[0].appendChild(script_element);
-}
 
 function jsonFlickrApi(data){
   if (data.photos.pages > 0){

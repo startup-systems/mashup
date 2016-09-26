@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="screen"/>
     <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
-    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 	<script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
 	<link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet' />
 
@@ -29,8 +29,10 @@
 
       <div class="jumbotron">
         <h1>My Favorite Restauant List</h1>
-        <p class="lead">Would like to share some of the restaurants I like in New York City. You can click the markers on the map below and it will show you the information of that place. </p>
+        <p id='weather'></p>
+        <p class="lead">Would like to share some of the restaurants I like. You can click the markers on the map below and it will show you the information of that place. </p>
         <p id='info' class="alert alert-info" role="alert"></p>
+
       </div>
       <div id='map' class='map'></div>
 	  
@@ -123,6 +125,20 @@
 		  info.innerHTML = '<div><strong>Info will show here.</strong></div>';
 		  }
 		 empty();
+
+         $.ajax({
+         	url: 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22new%20york%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys',
+         	dataType: 'jsonp',
+         	success: function(response){
+
+         		var temperature = response.query.results.channel.item.condition.temp;
+         		$('#weather').append('The temperature in <strong>NYC</strong> right now is <strong>'+ temperature + ' degree</strong>. Ready to explore some restaurants here? ')
+         	}
+
+
+         });
+		 
+
 
 		</script>
 

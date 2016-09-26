@@ -3,6 +3,14 @@ body {
   padding-bottom: 20px;
 }
 
+.jumbotron h1{
+	font-size: 30px;
+	color: #345a72;
+}
+.lead {
+	font-size: 14px;
+	color: #345a72;
+}
 .map {
 	height: 100%;
 	height: 500px;

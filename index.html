@@ -4,6 +4,7 @@
 <head>
   <title>Mashup</title>
   <link rel = "stylesheet" href="style.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 
 <body>
@@ -11,8 +12,12 @@
     <h1 id='city'>An App</h1>
     <p>
       <a id="temperature" href="#" onclick="switchUnits(); return false;" title="Click to switch between metric and imperial units"></a><span id="weather">
+      
         By Boting Li</p>
+      
     </section>
+    
+    
     
     <script>
       var weatherData = {
@@ -35,9 +40,9 @@
         weatherData.units = " C";
       }
 
-      weatherData.temperature.innerHTML = weatherData.temperatureValue + weatherData.units + ", ";   
+      weatherData.temperature.innerHTML = weatherData.temperatureValue + weatherData.units;   
       console.log(""+weatherData.temperatureValue)
-       console.log( weatherData.units)
+      console.log( weatherData.units)
     }
       
       
@@ -95,11 +100,9 @@
           console.log("" + ind)
           var photo = data.photos.photo[ind];
           document.querySelector("body").style.backgroundImage = "url('" + photo.url_l + "')";
-          //document.querySelector("#image-source").setAttribute("href", "http://www.flickr.com/photos/" + photo.owner + "/" + photo.id);
         }
         else{
           document.querySelector("body").style.backgroundImage = "url('https://fourtonfish.com/tutorials/weather-web-app/images/default.jpg')";
-          //document.querySelector("#image-source").setAttribute("href", "https://www.flickr.com/photos/superfamous/310185523/sizes/o/");
         }
       }
       

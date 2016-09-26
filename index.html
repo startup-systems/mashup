@@ -9,8 +9,7 @@
       $.ajax({
         url:'https://api.spotify.com/v1/artists/2ye2Wgw4gimLv2eAKyk1NB/top-tracks?country=SE',
         dataType: 'json',
-        success: function(result){
-        	
+        success: function(result){	
           for (var i = 0; i < result.tracks.length; i++){
             var songname = result.tracks[i].name;
             $('#TopTracks').append('<li class = "intro">' + songname + '</li>');

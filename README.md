@@ -4,4 +4,4 @@ References:
 http://awaxman11.github.io/blog/2013/07/21/checking-out-js/
 http://stackoverflow.com/questions/28499141/how-to-change-google-map-center-by-clicking-a-button
 https://developers.google.com/speed/libraries/
-http://www.w3schools.com/jquery/event_click.asp
+http://www.w3schools.com/jquery/eventclick.asp

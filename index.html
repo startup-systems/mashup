@@ -1,8 +1,47 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Mashup</title>
-  </head>
-  <body>
-  </body>
+    <head>
+        <title>Mashup</title>
+		<link href="stylesheet.css" type="text/css" rel="stylesheet" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <!-- Load Feather code -->
+		<script type="text/javascript" src="http://feather.aviary.com/imaging/v3/editor.js"></script>
+
+		<!-- Instantiate Feather -->
+		<script type='text/javascript'>
+			var featherEditor = new Aviary.Feather({
+				apiKey: '463822cfe2b94aae9c119ab8ab6179ca',
+				theme: 'light', // Check out our new 'light' and 'light' themes!
+				tools: 'all',
+				appendTo: '',
+				onSave: function(imageID, newURL) {
+							var img = document.getElementById(imageID);
+								img.src = newURL;
+						},
+				onError: function(errorObj) {
+							alert(errorObj.message);
+						}
+			});
+			function launchEditor(id, src) {
+				featherEditor.launch({
+					image: id,
+					url: src
+				});
+				return false;
+			}
+			
+		</script>
+    </head>
+
+    <body>
+        
+
+		<div id='injection_site'></div>
+		
+		<img id='image1' src='http://www.thankgodimnatural.com/tgin/wp-content/uploads/2015/04/new-york-at-night.jpg'/>
+		<br><br>
+
+		<button id="clickMe" value="Edit Photo" onclick="return launchEditor('image1', 'http://www.thankgodimnatural.com/tgin/wp-content/uploads/2015/04/new-york-at-night.jpg');" >Edit Photo</button>
+		
+    </body>
 </html>

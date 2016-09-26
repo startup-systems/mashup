@@ -52,6 +52,7 @@
 	  document.getElementById('submit').addEventListener('click', function() {
           obtainAddress(geocoder, map);
       }
+  }						    
 	  function obtainAddress(geocoder, resultsMap) {
 		var address = document.getElementById('address').value;
 		geocoder.geocode({'address': address}, function(results, status) {

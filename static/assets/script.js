@@ -2,7 +2,7 @@
 function changeContent() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
+    if (this.readyState === 4 && this.status === 200) {
       document.getElementById("change").innerHTML = this.responseText;
     }
   };
@@ -18,11 +18,11 @@ function changeContent() {
 	    center: new google.maps.LatLng(51.5, -0.2), 
 	    zoom: 10,
 	    maptype: "satellite",
-	  }
+	  };
 	  var map = new google.maps.Map(mapCanvas, mapOptions);
-	}
+	};
 
-// soundcloud ---------------
+// soundcloud ---------------;
 
 SC.get('/shimieshimshim').then(function(tracks){
   alert('Latest track: ' + tracks[0].title);

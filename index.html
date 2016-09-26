@@ -1,8 +1,56 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Mashup</title>
-  </head>
+<head> 
+<title> Abhi's cat video page </title>
+</head> 
   <body>
+    <div id="player"></div>
+
+    <script>
+      var tag = document.createElement('script');
+      var player;
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+ 
+        var onPlayerReady = function(event) {
+          event.target.playVideo();
+        };
+  
+        var stopVideo = function() {
+          player.stopVideo();
+        };
+        var done = false;
+        var onPlayerStateChange = function(event) {
+          if (event.data === YT.PlayerState.PLAYING && !done) {
+            setTimeout(stopVideo, 6000);
+            done = true;
+          }
+        };
+
+      function onYouTubeIframeAPIReady() {
+        var catVids = Array('XyNlqQId-nk','DBsEJ0JyoeU','GPo3taFfI6o', 'q0375WPYsd0','jS10CcTPbYI');
+        var catVid = catVids[Math.floor(Math.random()*catVids.length)];
+        player = new YT.Player('player', {
+          height: '500',
+          width: '750',
+          videoId: catVid,
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+$.ajax({
+  url: "test.html",
+  cache: false,
+  success: function(html){
+    $("#results").append(html);
+  }
+});
+
+    </script>
   </body>
 </html>

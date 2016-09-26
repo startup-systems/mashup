@@ -1,8 +1,60 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Mashup</title>
-  </head>
-  <body>
-  </body>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Google Search Autocomplete + Wikipedia Test</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+    <div>
+        Enter word to find out whether this is a hip search term:
+        <input type="text" name="SearchTerm" value="hllo" id="searchBox">
+    </div>
+    <div id="queryResult">
+    </div>
+    <div id="wikipediaOutput">
+    </div>
+
+    <script>
+    function getDefinition(query) {
+        $.ajax({
+            url: "https://en.wikipedia.org/w/api.php",
+            data: {
+                format: "json",
+                action: "parse",
+                page: query,
+                prop:"text",
+                section:0
+            },
+            dataType: 'jsonp'
+        })
+        .done(function( data ) {
+            console.log(data.parse.text["*"]);
+            $('#wikipediaOutput').html(data.parse.text["*"]);
+        });
+    }
+
+    function searchNow(query) {
+        var googleAutocompleteAPI = "http://suggestqueries.google.com/complete/search?client=firefox";
+        $.getJSON( googleAutocompleteAPI, {
+            q: query
+        })
+        .done(function( data ) {
+            //console.log(data[1]);
+            if (data[1][0] === query) {
+                $('#queryResult').html("<p>This is a commonly used search term. Here's a Wikipedia extract:</p>");
+                getDefinition(query);
+            } else {
+                $('#queryResult').html("<p>Did you mean " + data[1][0] + " or " + data[1][1] + "</p>");
+            }
+
+        });
+    }
+
+    $('#searchBox').on('input', function() {
+        searchNow($(this).val());
+    });
+    </script>
+
+</body>
 </html>

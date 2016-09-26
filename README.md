@@ -1,7 +1,7 @@
 # Mashup project
 
-Project description:  Using Google Maps API to create a UI to place multiple markers on places in the map.
-
+Project description: Using Google Knowledge Graph Search API to perform a search matching 'Cornell Tech'.
+Reference: https://developers.google.com/knowledge-graph/
 ......
 
 

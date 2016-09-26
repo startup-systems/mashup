@@ -2,7 +2,40 @@
 <html>
   <head>
     <title>Mashup</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script src="vendor/angular.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
   </head>
   <body>
+
+  	<div ng-app="myApp" ng-controller="myCtrl">
+  	<div class="tickr">Tickr</div>
+
+	  	<div class="find">
+	  		<input ng-model="searchStock" placeholder="Find Stocks" class="findBar"><button ng-click="findStock()" class="goButton">Go</button> 
+	  	</div>
+
+	  	<div ng-repeat="stock in searchResults" ng-if="searchResults">
+	  		<div class="results" ng-click="addStock($index)" ng-if="stock.Name != ''">{{stock.Name}}</div>
+	  	</div>
+
+	  	<table>
+		  <tr>
+		    <th>Stock</th>
+		    <th>High</th>
+		    <th>Low</th>
+		    <th>Last Price</th>
+		  </tr>
+		  <tr ng-repeat="myStock in myStocks">
+		    <td>{{myStock.Symbol}}</td>
+		    <td>{{myStock.High}}</td>
+		    <td>{{myStock.Low}}</td>
+		    <td>{{myStock.LastPrice}}</td>
+		  </tr>
+		</table>
+
+	</div>
+
   </body>
 </html>
+

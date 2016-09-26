@@ -1,33 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-   <title>shanshan's google map api webpage</title>
+  <title>shanshan's google map api webpage</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <style type="text/css">
-      html, body { height: 100%; margin: 0; padding: 0; }
-      #map { height: 80%; }
-    </style>
+  <style type="text/css">
+    html, body { height: 100%; margin: 0; padding: 0; }
+    #map { height: 80%; }
+  </style>
   </head>
+  
   <body>
     <div id="map"></div>
-      <div id="message"></div>
+    <div id="message"></div>
     <script type="text/javascript">
-
-var map;
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 51.508742, lng: -0.120850},
-    zoom: 8
-  });
-}
-
+      var map;
+      function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: 51.508742, lng: -0.120850},
+      zoom: 8
+      });
+      }
     </script>
     <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfTVpYHT2oTQd6cm5tTPJZel8Ebmv585I&callback=initMap">
     </script>
      <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-  </body>
-
      <script type="text/javascript">
         var i;
         var addressInfo;
@@ -37,8 +34,9 @@ function initMap() {
             addressInfo[i] = data.results[i].formatted_address;
             document.getElementById("message").innerHTML += addressInfo[i] + "<br>";
             console.log(addressInfo[i]);
-        };
+        }
         }); 
 
  </script>
+</body>
 </html>

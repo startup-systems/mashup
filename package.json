@@ -31,5 +31,6 @@
     "maxparams": 3,
     "maxstatements": 10,
     "newcap": true
-  }
+  },
+  "license": "UNLICENSED"
 }

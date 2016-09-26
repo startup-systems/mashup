@@ -4,11 +4,9 @@
 <title> Abhi's cat video page </title>
 </head> 
   <body>
-    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
     <div id="player"></div>
 
     <script>
-      // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
       var player;
 
@@ -16,14 +14,13 @@
       var firstScriptTag = document.getElementsByTagName('script')[0];
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
  
-// 4. The API will call this function when the video player is ready.
         var onPlayerReady = function(event) {
           event.target.playVideo();
         };
   
-        // 5. The API calls this function when the player's state changes.
-        //    The function indicates that when playing a video (state=1),
-        //    the player should play for six seconds and then stop.
+        var stopVideo = function() {
+          player.stopVideo();
+        };
         var done = false;
         var onPlayerStateChange = function(event) {
           if (event.data === YT.PlayerState.PLAYING && !done) {
@@ -31,12 +28,7 @@
             done = true;
           }
         };
-        var stopVideo = function() {
-          player.stopVideo();
-        };
 
-      // 3. This function creates an <iframe> (and YouTube player)
-      //    after the API code downloads.
       function onYouTubeIframeAPIReady() {
         var catVids = Array('XyNlqQId-nk','DBsEJ0JyoeU','GPo3taFfI6o', 'q0375WPYsd0','jS10CcTPbYI');
         var catVid = catVids[Math.floor(Math.random()*catVids.length)];

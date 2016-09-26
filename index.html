@@ -1,8 +1,80 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Mashup</title>
-  </head>
-  <body>
-  </body>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Mashup</title>
+	<script src="https://code.jquery.com/jquery-3.0.0.js"></script>
+</head>
+
+<body>
+	<div>
+		<input type="text" id="s_box" placeholder="e.g. user, email, ...">
+		<button id='s_btn'><span>Search Github's APIs!</span></button>
+	</div>
+	<div id='s_result'>
+	</div>
+	<div>
+		<button id='show_all' class='false'><span>Display all of Github's APIs!</span></button>
+	</div>
+	<div id='all_APIs'>
+	</div>
+
+
+	<script>
+
+		url = "https://api.github.com/";
+		$('#s_btn').on('click', function() {
+			var s = $('#s_box').val();
+			if (s === "") {
+				alert("Search string is empty!");
+				return;
+			}
+
+			$.getJSON(url, function( data ) {
+				var items = [];
+				$.each(data, function(k, v) {
+					if (v.includes(s)) {
+						items.push("<li id='" + k + "'>" + v + "</li>");
+					}
+				});
+
+				var x = $( "<ul/>", {
+					"class": "my-new-list",
+					html: items.join( "" )
+				});
+
+			// console.log(x);
+			$('#s_result').html(x);
+		});
+		});
+
+
+		$('#show_all').on('click', function() {
+			//console.log(this);
+
+			if ($(this).attr('class') === "false") {
+				$.getJSON(url, function( data ) {
+					var items = [];
+					$.each(data, function(k, v) {
+						items.push("<li id='" + k + "'>" + v + "</li>");
+					});
+
+					$('#all_APIs').html($( "<ul/>", {
+						"class": "my-new-list",
+						html: items.join( "" )
+					}));
+				});
+				$(this).attr('class', 'true');
+				$($(this).children()[0]).html('Clear all!');
+			} else {
+				$('#all_APIs').html("");
+				$(this).attr('class', 'false');
+				$($(this).children()[0]).html("Display all of Github's APIs!");
+			}
+
+
+		});
+	</script>
+</body>
 </html>

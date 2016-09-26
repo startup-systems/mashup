@@ -27,6 +27,12 @@ footer{
   border-bottom:
 }
 
+.change
+{
+  cursor: pointer
+  
+}
+
 body{
   height: 100%;
   margin: 0;

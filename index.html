@@ -2,8 +2,18 @@
 <html>
   <head>
     <title>Mashup</title>
-    <script>
-      
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+   <script>
+      $.ajax({
+        url: 'https://api.instagram.com/v1/tags/alps/media/recent?client_id=13d7e803a5044b0abc280a328d45620e',
+        dataType: 'jsonp',
+        success: function(result){
+          for (var i = 0; i < result.data.length; i++){
+            var url = result.data[i].images.thumbnail.url;
+            $('body').append('<img src="' + url + '"/>');
+          }
+        }
+      });
     </script>
   </head>
   <body>

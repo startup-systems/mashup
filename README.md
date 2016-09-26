@@ -1,4 +1,4 @@
-## Mashup project
+# Mashup project
 
-# Search GitHub Repos
+## Search GitHub Repos
 By typing in GitHub username, a list of repos will show.

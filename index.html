@@ -28,13 +28,11 @@
     </style>
   </head>
   <body>
-	<div id="form"></div>  
-	  <form action="demo_form.asp">
-	  Street: <input type="text" name="fname"><br>
-	  City: <input type="text" name="lname"><br>
-	  <input type="submit" value="Submit">
-	  </form>
-    <div id="map"></div>
+	<div id="form">  
+      		<input id="address" type="textbox" value="Sydney, NSW">
+      		<input id="submit" type="button" value="Geocode">
+       </div>
+       <div id="map"></div>
     <script>
       var map;
       var geocoder;
@@ -44,27 +42,23 @@
           center: {lat: -34.397, lng: 150.644},
           zoom: 5
         });
+	  document.getElementById('submit').addEventListener('click', function() {
+          obtainAddress(geocoder, map);
       }
-        function obtainAddress() {
-    var add = document.getElementById('address').value;
-    geocoder.geocode( { 'address': address}, function(results, status) {
-      if (status == 'OK') {
-        map.setCenter(results[0].geometry.location);
-        var marker = new google.maps.Marker({
-            map: map,
-            position: results[0].geometry.location
-        });
-      } else {
-        alert('Could not obtain address due to the following reasons:' + status);
-      }
-    });
-  }
-  <div>
-    <input id="address" type="textbox" value="Sydney, NSW">
-    <input type="button" value="Encode" onclick="codeAddress()">
-  </div>
-	    
-	    
+	  function geocodeAddress(geocoder, resultsMap) {
+		var address = document.getElementById('address').value;
+		geocoder.geocode({'address': address}, function(results, status) {
+		  if (status === 'OK') {
+		    resultsMap.setCenter(results[0].geometry.location);
+		    var marker = new google.maps.Marker({
+		      map: resultsMap,
+		      position: results[0].geometry.location
+		    });
+		  } else {
+		    alert('Geocode was not successful for the following reason: ' + status);
+		  }
+		});
+	      }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByAcKWzArzxOwNRHIRNZOuJlkN9uZ7xOw&callback=initMap"
     async defer></script>

@@ -39,11 +39,7 @@
 <script>
 $('#searchlist').btsListFilter('#searchinput', {
 	loadingClass: 'loading',
-	sourceTmpl: '<a class="list-group-item" href="{url}"><span>{ articleBody }</span></a>',
-	/** sourceData: function(text, callback) {
-		return $.getJSON(text, function(json) {
-			callback(json);
-		});**/
+	sourceTmpl: '<a class="list-group-item" href="{ url }"><span>{ articleBody }</span></a>',
 	sourceData: function(text, callback) {
 		var service_url = 'https://kgsearch.googleapis.com/v1/entities:search';
 		var params = {
@@ -56,9 +52,7 @@ $('#searchlist').btsListFilter('#searchinput', {
 			var list = [];
 			$.each(response.itemListElement, function(i, element) {
 			  	list.push(element.result.detailedDescription);
-				console.log(element.result.detailedDescription);
 			});
-			console.log(list);
 			callback(list);
 		});
 

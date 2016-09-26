@@ -1,24 +1,12 @@
+
+<!DOCTYPE html>
 <html>
 <head>
 <title>Mashup</title>
 
 <script src="./vendor/jquery-3.1.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://apis.google.com/js/client.js?onload=onClientLoad" type="text/javascript"></script>
-<script type="text/javascript">
-
-$(document).ready(function(){
-
-
-  $("button").click(function(){
-    var input = $("input:text").val();
-    //alert(input);
-    searchYoutube(input);
-    //searchYoutube(input);
-    //alert($("input:text").val());
-  });
-});
-</script>
-
 <script>
   function onYouTubeApiLoad() {
     // This API key is intended for use only in this lesson.
@@ -28,7 +16,7 @@ $(document).ready(function(){
     //search();
 }
 function onSearchResponse(response) {
-    showResponse(response)
+    showResponse(response);
 }
 function showResponse(response) {
     $("#result").empty();
@@ -39,10 +27,7 @@ function showResponse(response) {
                     "<div>" + response.items[i].snippet.title + "<img src=" +
                     response.items[i].snippet.thumbnails.default.url + "/>" +
                     "</div>"  + "<hr/>");
-
     }
-
-
 
     //var responseString = JSON.stringify(response, '', 2);
     //document.getElementById('response').innerHTML += responseString;
@@ -58,6 +43,24 @@ function showResponse(response) {
 
   }
 
+</script>
+
+
+
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+
+  $("button").click(function(){
+    var input = $("input:text").val();
+    //alert(input);
+    searchYoutube(input);
+    //searchYoutube(input);
+    //alert($("input:text").val());
+  });
+});
 </script>
 
 

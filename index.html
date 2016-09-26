@@ -112,11 +112,13 @@
                 
                 directionsDisplay.setDirections(response);
                 
-                var route = response.routes[0];
-                var summaryPanel = document.getElementById('directions-panel');
+                var route, routeSegment, summaryPanel;
+                route = response.routes[0];
+                
+                summaryPanel = document.getElementById('directions-panel');
                 summaryPanel.innerHTML = '';
       // For each route, display summary information.
-                var routeSegment;
+//                var routeSegment;
                 
                 for (var i = 0; i < route.legs.length; i++) {
                     

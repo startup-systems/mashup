@@ -22,8 +22,8 @@ function changeContent() {
 	  var map = new google.maps.Map(mapCanvas, mapOptions);
 	}
 
-// soundcloud ---------------;
-;
+// soundcloud ---------------
+
 SC.get('/shimieshimshim').then(function(tracks){
   alert('Latest track: ' + tracks[0].title);
 });

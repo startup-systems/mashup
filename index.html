@@ -1,9 +1,59 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Mashup</title>
-  </head>
-  <body>
-    <p>Welcome</p>
-  </body>
+<head>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+      if($('#results').find('tr').length>=20){
+        $("#results").empty();
+        $('#results').append('<thead><tr><th>#</th><th>Name</th><th>Artist</th><th>Preview</th></tr></thead><tbody><tr></tr></tbody>')
+      }
+        $.ajax({url: 'https://api.spotify.com/v1/search?q='+$("#search_text").val()+'&type=track&market=US',type:'GET',dataType: 'json',success: function(result){
+          for (var i=0;i<result.tracks.items.length;i++){
+          $('#results tr:last').after('<tr><th scope="row">'+(i+1)+'</th><td>'+result.tracks.items[i].name+'</td><td>'+result.tracks.items[i].artists[0].name+'</td><td><audio controls><source src='+result.tracks.items[i].preview_url+'></audio></td></tr>');
+          }
+        }, error: function(xhr){
+            alert("An error occured: " + xhr.status + " " + xhr.statusText);
+        }});
+    });
+});
+</script>
+<title>Mashup</title>
+</head>
+<body>
+
+<div class="container">
+  <h1>Welcome to Spotify search</h1>
+
+<div id ="form-group row" >
+    <input type="text" class="form-control" id="search_text" placeholder="Enter the track detail you want to search">
+<button  class="btn btn-primary" style="margin-top:20px;background-color:#6ae368;border-color:#ffffff;">Search</button>
+
+</div>
+<table class="table table-inverse" id="results">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Artist</th>
+      <th>Preview</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      
+    </tr>
+  </tbody>
+</table>
+</div>
+
+</body>
 </html>
+
+

@@ -10,7 +10,7 @@ const currentFileRelative = () => {
 
 // match the patterns that JSHint is excluding
 const getJSHintExcludes = () => {
-  let patterns = fs.readFileSync('.jshintignore').toString().split("\n");
+  var patterns = fs.readFileSync('.jshintignore').toString().split("\n");
   patterns = patterns.filter(pattern => { return !!pattern; });
   // exclude empty
   return patterns.map(pattern => { return `!${pattern}`; });
@@ -18,7 +18,7 @@ const getJSHintExcludes = () => {
 
 // attempt to match the files that JSHint is checking
 const filePatterns = () => {
-  let patterns = getJSHintExcludes();
+  var patterns = getJSHintExcludes();
   const currentFile = currentFileRelative();
   patterns.unshift('*.html', '*.js', `!${currentFile}`);
 

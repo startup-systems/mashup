@@ -2,7 +2,21 @@
 <html>
   <head>
     <title>Mashup</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   </head>
   <body>
+  	<h2>learn to use AJAX to call api to fetch data.</h2>
+  	<p> use github api to get my github account's repo</p>
+  	<ol>
+  	</ol>
+  	<script>
+  		var response;
+  		$.get( "https://api.github.com/users/bluenight1994/repos", function(r) {
+  			response = r;
+  			for(var i=0; i < response.length; i++) {
+  				$("ol").append("<li>"+response[i].name+"</li>");
+  			}
+  		});
+  </script>
   </body>
 </html>

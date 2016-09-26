@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>AJAX example</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-</head>
-<body>
-<script>
+  <head>
+      <title>AJAX example</title>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  </head>
+  <body>
+  <script>
   var service_url = 'https://kgsearch.googleapis.com/v1/entities:search';
   var params = {
     'query': 'Taylor Swift',
@@ -15,9 +15,9 @@
   };
   $.getJSON(service_url + '?callback=?', params, function(response) {
     $.each(response.itemListElement, function(i, element) {
-      $('<div>', {text:element['result']['name']}).appendTo(document.body);
+      $('<div>', {text:element.result.name]}).appendTo(document.body);
     });
   });
-</script>
-</body>
+  </script>
+  </body>
 </html>

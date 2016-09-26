@@ -5,8 +5,8 @@
     <script src="./vendor/jquery-3.1.1.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./styles/style.css">
   </head>
-  <body>
-    <input id="search_input" type="text" name="search" placeholder="Search..">
+  <body style="background-color:black">
+    <input id="search_input" type="text" name="search" placeholder="Search.." value="cars" style="margin-bottom:10pt">
     <div id='img_grid'></div>
     <script>
     var previewFromChild = function(child) {
@@ -25,7 +25,7 @@
 
     var search = function(searchText) {
       $.ajax({
-        url : 'https://www.reddit.com/search.json?q=' + searchText + '&sort=new',
+        url : 'https://www.reddit.com/search.json?q=' + searchText + '&sort=new&limit=100',
         type : 'GET',
         dataType:'json',
         success : function(responseJSON) {
@@ -44,7 +44,7 @@
           });
           imageURLs.forEach(function(imageURL) {
             var $imgContainer = $('<div class="floated_img_container"></div>');
-            $imgContainer.prepend('<img src="' + imageURL + '"/>');
+            $imgContainer.prepend('<img class="response_img" src="' + imageURL + '""/>');
             $('#img_grid').prepend($imgContainer);
           });
         },
@@ -54,11 +54,29 @@
       });
     };
 
+    search($('#search_input').val());
+
     $("#search_input").keyup(function(event){
       var searchText = $('#search_input').val();
       if(event.keyCode === 13){
           search(searchText);
       }
+    });
+
+    $('body').on('click', '.floated_img_container > .response_img', function(e) {
+      e.preventDefault();
+      var src = e.target.currentSrc;
+      var $fullScreenDiv = $('<div class="full_screen"></div>');
+      $fullScreenDiv.append('<img class="response_img" src="' + src + '"/>');
+      $('body').append($fullScreenDiv);
+      $fullScreenDiv.animate({opacity:1});
+    });
+
+    $('body').on('click', '.full_screen', function(e) {
+      e.preventDefault();
+      $('.full_screen').animate({opacity:0}, function() {
+        $('.full_screen').remove();
+      });
     });
     </script>
   </body>

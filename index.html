@@ -2,7 +2,154 @@
 <html>
   <head>
     <title>Mashup</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+	<script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
+	<link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet' />
+
+
+
   </head>
+
   <body>
+  	<div class="container">
+  		<div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" class="active"><a href="#">Home</a></li>
+            <li role="presentation"><a href="www.lanniemiao.com">Contact</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">Mashup</h3>
+      </div>
+
+
+      <div class="jumbotron">
+        <h1>My Favorite Restauant List</h1>
+        <p id='weather'></p>
+        <p class="lead">Would like to share some of the restaurants I like. You can click the markers on the map below and it will show you the information of that place. </p>
+        <p id='info' class="alert alert-info" role="alert"></p>
+
+      </div>
+      <div id='map' class='map'></div>
+	  
+
+		<script>
+		L.mapbox.accessToken = 'pk.eyJ1IjoiamlnZ2x5cHVmZm1lb3ciLCJhIjoiY2l0ajVhdmEwMDc3NzJubzN3a3g5cXl5cCJ9.yqeKYPsCs4up8WISiYRXdQ';
+		var info = document.getElementById('info');
+		var map = L.mapbox.map('map', 'mapbox.streets').setView([40.740914,-74], 13);
+		
+		//adding second layer to the map
+		var restaurantsInfo = L.mapbox.featureLayer().addTo(map);
+
+		var geoJson = [
+		    {
+		        type: 'Feature',
+		        geometry: {
+		            type: 'Point',
+		            coordinates: [-74.0099664 , 40.724020]
+		        },
+		        properties: {
+		            name: 'China Blue',
+		            description: '<em>Chinese cuisine</em><br/> authentic home flavor. I especially like their environment.',
+		            'marker-color': '#548cba'
+		        }
+		    },
+		    {
+		        type: 'Feature',
+		        geometry: {
+		            type: 'Point',
+		            coordinates: [-74.00579849999997, 40.7423007]
+		        },
+		        properties: {
+		            name: 'Los Tacos No.1',
+		            description: '<em>Mexican & Tacos!</em><br/> I LOVE their tacos, especially the steak one ',
+		            'marker-color': '#548cba'
+		        }
+		    },
+		    {
+		        type: 'Feature',
+		        geometry: {
+		            type: 'Point',
+		            coordinates: [-73.9850161, 40.747022]
+		        },
+		        properties: {
+		            name: 'Kang Ho Dong Barbeque',
+		            description: '<em>Korean Barbeque</em> ',
+		            'marker-color': '#548cba'
+		        }
+		    },
+		    {
+		        type: 'Feature',
+		        geometry: {
+		            type: 'Point',
+		            coordinates: [-73.97553649999998, 40.7651883]
+		        },
+		        properties: {
+		            name: 'Sarabeth',
+		            description: '<em>Brunch,American</em><br/> one of my to-go brunch places when I want to catch up with my friends',
+		            'marker-color': '#548cba'
+		        }
+		    },
+		    {
+		        type: 'Feature',
+		        geometry: {
+		            type: 'Point',
+		            coordinates: [-73.98631490000002, 40.7296983]
+		        },
+		        properties: {
+		            name: 'Chikalicious Dessert Bar',
+		            description: '<em>Dessert</em><br/> pre-fix menu, and you will be able to see them make it from scratch ',
+		            'marker-color': '#548cba'
+		        }
+		    }
+		];
+
+		restaurantsInfo.setGeoJSON(geoJson);
+
+		restaurantsInfo.on('click',function(e) {
+		    e.layer.closePopup();
+		    var feature = e.layer.feature;
+		    var content = '<div><p>Restaurant: <em>' + feature.properties.name + '</em></p>' +
+		                  '<p>' + feature.properties.description + '</p></div>';
+		    info.innerHTML = content;
+		});
+
+	
+
+		//showing placeholder when just loaded
+		function empty() {
+		  info.innerHTML = '<div><strong>Info will show here.</strong></div>';
+		  }
+		 empty();
+
+         $.ajax({
+         	url: 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22new%20york%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys',
+         	dataType: 'jsonp',
+         	success: function(response){
+
+         		var temperature = response.query.results.channel.item.condition.temp;
+         		$('#weather').append('The temperature in <strong>NYC</strong> right now is <strong>'+ temperature + ' degree</strong>. Ready to explore some restaurants here? ');
+         	}
+
+
+         });
+		 
+
+
+		</script>
+
+      <footer class="footer">
+        <p>&copy; 2016 Lannie Miao</p>
+      </footer>
+  	</div>
+
+  	
+    
+
+
   </body>
 </html>

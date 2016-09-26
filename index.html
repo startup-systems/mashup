@@ -1,8 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Mashup</title>
+    <title>Mashup: IP+Location</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 50%;
+      }
+    </style>
+    <h1>[NetID: mw866] CS5356 Homework: Mashup</h1>
   </head>
   <body>
+    <p>This is your approximate location based on your IP address.</p>
+    <div id="map"></div>
+    <p>This is your approximate WHOIS record based on your IP address.</p>
+    <table id="whois"></table>
+
+    <script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
+    <script src='js/main.js'></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGjuVkx0ICgkjnNAnHkZb6Gr1evz6FJqE&callback=main"
+    async defer></script>
   </body>
 </html>

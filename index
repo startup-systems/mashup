@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mashup</title>
+  </head>
+  <body>
+  </body>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByAcKWzArzxOwNRHIRNZOuJlkN9uZ7xOw&callback=initMap"
+  type="text/javascript"></script>
+
+</html>

@@ -3,7 +3,7 @@ $(document).ready(function() {
     $("button#showJSONBtn").click(function( event ) {
         var div = $("div#JSONContentHolder");
         div.empty(); //To prevent endless appending after several clicks
-        var userid = $("input").value;
+        var userid = $("input").val();
         $.ajax({
             url: "https://api.github.com/users/" + userid,
             type: "GET",

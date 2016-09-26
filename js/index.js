@@ -6,16 +6,9 @@ app.config(['$httpProvider', function($httpProvider) {
     }
 ]);
 
-app.controller('myCtrl', function($scope, $http, $http) {
+app.controller('myCtrl', function($scope, $http) {
 
-    $scope.myStocks = []
-
-    $scope.myStock1 = {
-    	'Symbol': 'APLE',
-    	'LastPrice': 89,
-    	'High': 90,
-    	'Low': 88
-    }
+    $scope.myStocks = [];
 
     $scope.findStock = function(){
     	$http({
@@ -32,12 +25,12 @@ app.controller('myCtrl', function($scope, $http, $http) {
 	    	console.log("Error", response);
 	    });
 	    $scope.searchStock = '';
-    }
+    };
 
     $scope.addStock = function(index) {
     	console.log("Clicked", $scope.searchResults[index].Name);
     	$scope.getQuote($scope.searchResults[index].Symbol);
-    }
+    };
 
     $scope.getQuote = function(stock) {
     	$http({
@@ -52,7 +45,7 @@ app.controller('myCtrl', function($scope, $http, $http) {
     		$scope.myStocks.push(response.data);
     		$scope.searchResults = [];
     	}, function Error(response){
-    		console.log("Couldn't get Quote!")
-    	})
-    }
+    		console.log("Couldn't get Quote!");
+    	});
+    };
 });

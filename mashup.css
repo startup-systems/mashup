@@ -1,0 +1,15 @@
+body {
+    background-color: lightblue;
+    font-family: "Courier New", Courier, monospace;
+}
+
+h1 {
+    color: navy;
+    margin-left: 20px;
+}
+
+img {
+    height: 100px;
+    float: left;
+
+}

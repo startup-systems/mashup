@@ -55,25 +55,7 @@
       }
     </style>
   </head>
-  <script>
-////      var latitude = [];
-////      var longitude = [];
-//      function myMap() {
-//          $.getJSON( "https://api.meetup.com/2/cities.json?callback=?", function(data) {
-//              $.each(data, function() {
-//                  for (i = 0; i < 1; i++) {
-//                      console.log(data.results[i].lat);
-//                      $("#start").val(data.results[i].lat);
-//                      $("#end").val(data.results[i].lat);
-//                  }
-//                
-//                  
-////  			           latitude[i] = data.results[i];
-////  			           longitude[i] = data.results[i];
-//                  });
-//              });
-//      }
-</script>
+    
   <body>
     <div id="map"></div>
     <div id="right-panel">
@@ -111,20 +93,20 @@
             if (status === google.maps.DirectionsStatus.OK) {
                 
                 directionsDisplay.setDirections(response);
-                
-                var route = response.routes[0];
-                var summaryPanel = document.getElementById('directions-panel');
-                summaryPanel.innerHTML = '';
-      // For each route, display summary information.
-                
-                for (var i = 1; i < route.legs.length+1; i++) {
-                    
+//                
+//                var route = response.routes[0];
+//                var summaryPanel = document.getElementById('directions-panel');
+//                summaryPanel.innerHTML = '';
+//      // For each route, display summary information.
+//                
+//                for (var i = 0; i < route.legs.length; i++) {
+//                    console.log(route.legs.length);
 //                    var routeSegment = i + 1;
-                    summaryPanel.innerHTML += '<b>Route Segment: ' + i +'</b><br>';
-                    summaryPanel.innerHTML += route.legs[i-1].start_address + ' to ';
-                    summaryPanel.innerHTML += route.legs[i-1].end_address + '<br>';
-                    summaryPanel.innerHTML += route.legs[i-1].distance.text + '<br><br>';
-                }
+//                    summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +'</b><br>';
+//                    summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
+//                    summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
+//                    summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
+//                }
             } else {
                 window.alert('Directions request failed due to ' + status);
             }

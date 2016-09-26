@@ -1,8 +1,69 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Mashup</title>
-  </head>
-  <body>
-  </body>
+<head>
+	<link rel="stylesheet" type="text/css" href="stylesheet.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100i,300,400,500,500i,700,700i" rel="stylesheet">
+
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-84206101-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script>
+      $.ajax({
+        url: 'https://api.spotify.com/v1/artists/2ye2Wgw4gimLv2eAKyk1NB/top-tracks?country=SE',
+        dataType: 'json',
+        success: function(result){
+        	
+          for (var i = 0; i < result.tracks.length; i++){
+            var songname = result.tracks[i].name;
+            $('#TopTracks').append('<li class = "intro">' + songname + '</li>');
+          }
+        }
+      });
+    </script>
+</head>
+<body>
+
+<div id="container">
+<div class="TitleImage">
+	<figure class="ImageandCaption">
+		<img id="myImg" src="UtsavUVakil.jpg" alt="Utsav U Vakil" style="width:228px;height:228px;">
+		<div id="myModal" class="modal">
+
+  			<!-- The Close Button -->
+  			<span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+
+  			<!-- Modal Content (The Image) -->
+  			<img class="modal-content" id="img01">
+
+  			<!-- Modal Caption (Image Text) -->
+  			<div id="caption"></div>
+		</div>
+		<script type="text/javascript" src="scripts.js"></script>
+		<figcaption class="caption" id="imagecaption" >Net ID: uuv2</figcaption>
+	</figure>
+	<h1 class="nameUtsav">Utsav U Vakil</h1>
+</div>
+
+<div class = "introdiv">
+	<h1 class="introduction"> Introduction</h1>
+	<p class="intro"> I am Utsav U Vakil. I am a Graduate Student at Cornell Tech. I am pursuing Masters of Science in Information Systems, with a specialization in Health Tech.</p>
+</div>
+</div>
+
+<div>
+	<h1 class="introduction"> My favorite Artist Metallica and their top tracks on Spotify</h1>
+	<div id="TopTracks"> </div>
+</div>
+
+</body>
 </html>
+
+

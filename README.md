@@ -4,7 +4,7 @@ This mashup uses location data from ip-location to get weather information throu
 It displays the city and temperature in Celcius
 
 
-
+---------------------------------------------------------------------------OTHER COMMENTS----------------------------------------------
 
 
 This project is open-ended! Requirements:

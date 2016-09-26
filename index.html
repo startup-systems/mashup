@@ -23,14 +23,29 @@ input{
 
 
 <script>
-  $.ajax({
-  });
+        var address = "New York";
+        $.ajax({
+            dataType: 'text',
+            url: "https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key=AIzaSyA60jOQ0-YV7Tz6FUvzHRxvMImzS9sPvTo",
+            type: "GET",
+            success: function (data) {
+                var result = JSON.parse(data);
+				map.setCenter(result.results[0].geometry.location);
+				var marker = new google.maps.Marker({
+					map: map,
+					position: result.results[0].geometry.location
+				});
+            },
+            error: function () {
+                alert("code not found");
+            }
+        });
 </script>
 <script>
 
 
 function enterfield(el){
-	if (el.value == "address"){
+	if (el.value === "address"){
 		el.value= "";
 		el.style.color="black";
 		el.style.fontStyle="normal";
@@ -38,7 +53,7 @@ function enterfield(el){
 }
 
 function exitfield(el){
-	if (el.value ==""){
+	if (el.value ===""){
 		el.value = "address";
 		el.style.color="grey";
 		el.style.fontStyle="italic";

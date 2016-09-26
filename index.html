@@ -15,7 +15,7 @@
   };
   $.getJSON(service_url + '?callback=?', params, function(response) {
     $.each(response.itemListElement, function(i, element) {
-      $('<div>', {text:element.result.name]}).appendTo(document.body);
+      $('<div>', {text:element.result.name}).appendTo(document.body);
     });
   });
   </script>

@@ -15,7 +15,7 @@
        function Map(){
          var location = document.getElementById("address").value;     
          $.ajax({
-             url: "https://maps.googleapis.com/maps/api/geocode/json?address="+location+"&key=AIzaSyBNNRYFdgYqPMPaWvgFjZD9dAeR06Kii1c",
+             url: "https://maps.googleapis.com/maps/api/geocode/json?address="+location+"&key=AIzaSyAiG30JK6WeKNMFxty4cFUTBNp1hlj6hvE",
              success: function (data) {
                  var result = JSON.parse(data);
                  alert(result.results[0].geometry);

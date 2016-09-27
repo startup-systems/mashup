@@ -1,8 +1,6 @@
 <!DOCTYPE html>
  <html>
    <head>
-     <title>Mashup</title>
-     <meta charset="utf-8">
      <title> TRY googlemap </title>
      <meta charset="utf-8">
    	<meta name="viewport" content="width=device-width">
@@ -16,10 +14,6 @@
                   var result = JSON.parse(data);
                   alert(result.results[0].geometry);
               },
-              success: function (data) {
-                $("#resultarea").text(data);
-                var result = JSON.parse(data);
-             },
              error: function () {
                   alert("Wrong input!");
               }

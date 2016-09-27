@@ -1,6 +1,6 @@
 $('#action-button').click(function() {
     $.ajax({
-        url: '//dev.markitondemand.com/Api/v2/Lookup/jsonp',
+        url: 'http://dev.markitondemand.com/Api/v2/Lookup/jsonp',
         data: {
             input: document.getElementById('symbolsearch').value
         },
@@ -10,7 +10,7 @@ $('#action-button').click(function() {
         dataType: 'jsonp',
         success: function(data) {
             $.ajax({
-                url: '//dev.markitondemand.com/Api/v2/Quote/jsonp',
+                url: 'http://dev.markitondemand.com/Api/v2/Quote/jsonp',
                 data: {
                     symbol: data[0].Symbol,
                 },

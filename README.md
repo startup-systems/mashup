@@ -1,7 +1,7 @@
 # Mashup project
 This mashup uses location data from ip-location to get weather information through the Open Weather API and displays this to the user with geo-tagged images from Flickr in the background along.
 
-It displays the city and temperature in Celcius
+It displays the city and temperature in Celcius (as the default) but converts this to Fahrenheit when the Celcius value is clicked and vice versa.
 
 
 ---------------------------------------------------------------------------OTHER COMMENTS----------------------------------------------

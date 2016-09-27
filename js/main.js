@@ -48,5 +48,5 @@ function main(){
   .always(function() {
     alert( "The request is complete!" );
   });
-*/
+
 }

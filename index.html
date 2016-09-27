@@ -41,7 +41,7 @@ I have added a function to load random picture , and fixed some problem with the
       
       
       function switchUnits(){
-      if (weatherData.units == " C"){
+      if (weatherData.units === " C"){
         weatherData.temperatureValue = (weatherData.temperatureValue *  9/5 + 32).toFixed(1);
         weatherData.units = " F";
       }

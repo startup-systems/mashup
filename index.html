@@ -15,10 +15,7 @@
        function Map(){
          var location = document.getElementById("address").value;     
          $.ajax({
-             url: "https://maps.googleapis.com/maps/api/geocode/json?address="+location+"&key=AIzaSyAGJINSkv_ro8zf82hLGUfH5RO2Fp2aCTM
-
-content_copy
-",
+             url: "https://maps.googleapis.com/maps/api/geocode/json?address="+location+"&key=AIzaSyAGJINSkv_ro8zf82hLGUfH5RO2Fp2aCTM",
              success: function (data) {
                  var result = JSON.parse(data);
                  alert(result.results[0].geometry);

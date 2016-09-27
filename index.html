@@ -76,7 +76,7 @@ function roundTemperature (val){
 }
 
 function switchUnits(){
-	if (weather.units === "°C"){
+	if (weatherData.units === "°C"){
 		weatherData.temperatureValue = roundTemperature(weatherData.temperatureValue * 9/5 + 32);
 		weatherData.units = "°F";
 	}

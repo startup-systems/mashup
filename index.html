@@ -4,5 +4,15 @@
     <title>Mashup</title>
   </head>
   <body>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script>
+        $.get("http://dev.markitondemand.com/Api/v2/Quote/json",
+        {
+            symbol: "AAPL"
+        },
+        function ( jsonResult ){
+                console.Log(jsonResult);
+        })
+    </script>
   </body>
 </html>

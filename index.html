@@ -3,11 +3,9 @@
     <head>
         <title>Mashup</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
+		
         <!-- Load Feather code -->
-		<script type="text/javascript" src="https://dme0ih8comzn4.cloudfront.net/imaging/v2/editor.js
-
-"></script>
+		<script type="text/javascript" src="http://feather.aviary.com/imaging/v3/editor.js"></script>
 		<!-- Instantiate Feather -->
 		<script type='text/javascript'>
 			var featherEditor = new Aviary.Feather({
@@ -35,6 +33,12 @@
 				document.getElementById("image1").setAttribute("src", txt);
 				launchEditor("image1", txt);
 			}
+			
+			$(document).ready(function(){
+    			$("button").click(function(){
+        			$("#div1").load("ajax_text.txt");
+    			});
+			});
 		</script>
     </head>
     <body>
@@ -42,5 +46,6 @@
 		<input type="text" id="myurl" placeholder="Enter the url of an image" style="width: 250px; height: 45px"/>
 		<button id="geturl" onclick="myFunct()" style="width: 60px; height: 51px" >GO</button>
 		<img id='image1' src='http://www.stuarthoward.com/images/uploads/projects/1/blank-white__background.png' alt='Your image'/>
+		<div id="div1"></div>
     </body>
 </html>

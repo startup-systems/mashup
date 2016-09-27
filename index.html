@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Geocoding service</title>
+    <title>Welcome to Gautam's Map Quest</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     	<style type="text/css">
+          title{
+            font: 50px;
+            color: white;  
+            text-align: center;
+          }
           html,body{
           background-color: blue;
           height: 100%;
           width:100%;
           text-align:center;
           }
-          #map {
+          #map, #pano {
           height:50%;
           width:50%;
           left:25%;
@@ -38,6 +43,7 @@
       <input id="submit" type="button" value="Find Location">
     </div>
     <div id="map"></div>
+    <div id="pano"></div>
     <script>
       function geocodeAddress(geocoder, resultsMap) {
         var address = document.getElementById('address').value;
@@ -49,7 +55,7 @@
               position: results[0].geometry.location
             });
           } else {
-            alert('Geocode was not successful for the following reason: ' + status);
+            alert('Could not find address for the following reason: ' + status);
           }
         });
       }
@@ -63,6 +69,16 @@
         document.getElementById('submit').addEventListener('click', function() {
           geocodeAddress(geocoder, map);
         });
+         var panorama = new google.maps.StreetViewPanorama(
+            document.getElementById('pano'), {
+              position: results[0].geometry.location,
+              pov: {
+                heading: 34,
+                pitch: 10
+              }
+            });
+        map.setStreetView(panorama);
+        
       }
     </script>
     <script async defer

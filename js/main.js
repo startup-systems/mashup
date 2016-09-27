@@ -16,7 +16,7 @@ function initMap(ipLng, ipLat){
 function main(){
   var ipLng;
   var ipLat;
-  $.getJSON("http://ip-api.com/json/?callback=?", function(data) {
+  /*$.getJSON("http://ip-api.com/json/?callback=?", function(data) {
       var table_body = "";
       $.each(data, function(k, v) {
          table_body += "<tr><td>" + k + "</td><td><b>" + v + "</b></td></tr>";
@@ -24,8 +24,8 @@ function main(){
       $("#whois").html(table_body);
       initMap(data.lon, data.lat);
       console.log(data.lon, data.lat);
-    });
-/*    $.ajax({
+    });*/
+    $.ajax({
       url: "http://ip-api.com/json/?callback=?",
       type: "GET",
       dataType : "json",
@@ -41,14 +41,11 @@ function main(){
     console.log(data.lon, data.lat);
   })
 
-  .fail(function( xhr, status, errorThrown ) {
-    alert( "Sorry, there was a problem!" );
-    console.log( "Error: " + errorThrown );
-    console.log( "Status: " + status );
-    console.dir( xhr );
+  .fail(function( ) {
+    alert( "Error!" );
   })
 
-  .always(function( xhr, status ) {
+  .always(function() {
     alert( "The request is complete!" );
   });
 */

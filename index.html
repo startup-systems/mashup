@@ -85,7 +85,7 @@ function switchUnits(){
 		weatherData.units = "°C";
 	}
 
-	weatherData.temperature.innerHTML = weatherData.temperatureValue + weatehrData.units + ",";
+	weatherData.temperature.innerHTML = weatherData.temperatureValue + weatehrData.units + "";
 }
 
 function loadBackground(lat, lon, weatherTag) {
@@ -99,7 +99,7 @@ function loadBackground(lat, lon, weatherTag) {
 function getLocationAndWeather(){
   if (window.XMLHttpRequest){
     var xhr = new XMLHttpRequest();
-var setState = function() {
+     var setState = function() {
       response=JSON.parse(xhr.responseText);
       this.responSe = JSON.parse(xhr.responseText);
       var position = {
@@ -111,7 +111,7 @@ var setState = function() {
       weatherData.temperatureValue = weatherTemperature;
       loadBackground(position.latitude, position.longitude, response.weather.simple);
       weatherData.city.innerHTML = response.city;
-      weatherData.weather.innerHTML =  ", " + response.weather.descriptionn;
+      weatherData.weather.innerHTML =  ", " + response.weather.description;
       weatherData.temperature.innerHTML = weatherTemperature + weatherData.units;
    };
     

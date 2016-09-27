@@ -1,4 +1,4 @@
-# Mashup project
+# Pokemon Mashup project
 
 This project is a mashup using Pokeapi
 

@@ -1,0 +1,200 @@
+/* Space out content a bit */
+
+body {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+/** navbar */
+
+.nav-pills .nav-item p {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.nav-pills .nav-item a {
+    text-decoration: none;
+    color: white;
+}
+
+.nav-pills .nav-item a:hover {
+    color: black;
+    background-color: #1BFFFF;
+}
+
+code {
+    background-color: #1BFFFF;
+}
+
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+
+.header,
+.footer {
+    padding-right: 1rem;
+    padding-left: 1rem;
+    color: #818a91;
+}
+
+
+/* Custom page header */
+
+.header {
+    padding-bottom: 1rem;
+    border-bottom: .05rem solid #e5e5e5;
+}
+
+
+/* Make the masthead heading the same height as the navigation */
+
+.header h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 3rem;
+}
+
+
+/* Custom page footer */
+
+.footer {
+    padding-top: 1.5rem;
+    border-top: .05rem solid #e5e5e5;
+}
+
+
+/* Customize container */
+
+@media (min-width: 48em) {
+    .container {
+        max-width: 46rem;
+    }
+}
+
+.container-narrow > hr {
+    margin: 2rem 0;
+}
+
+
+/* Main marketing message and sign up button */
+
+.jumbotron {
+    text-align: center;
+    border-bottom: .05rem solid #e5e5e5;
+    background: #1BFFFF;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#2E3192, #1BFFFF);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#2E3192, #1BFFFF);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#2E3192, #1BFFFF);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#2E3192, #1BFFFF);
+    /* Standard syntax */
+    color: white;
+}
+
+.jumbotron h1 {
+    font-size: 4rem;
+    font-weight: 400;
+}
+
+
+/* Responsive: Portrait tablets and up */
+
+@media screen and (min-width: 48em) {
+    /* Remove the padding we set earlier */
+    .header,
+    .footer {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    /* Space out the masthead */
+    .header {
+        margin-bottom: 2rem;
+    }
+    /* Remove the bottom border on the jumbotron for visual effect */
+    .jumbotron {
+        border-bottom: 0;
+    }
+}
+
+
+/** projects */
+
+
+/** projects section */
+
+.projects a:hover {
+    text-decoration: underline;
+    color: white;
+}
+
+.projects {
+    padding-bottom: 1.5em;
+}
+
+.projects h2 {
+    font-size: 2em;
+    text-align: center;
+    padding: 1.5em;
+    color: white;
+}
+
+.projects .card {
+    padding: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.2s ease-in-out;
+}
+
+.project .card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.projects .repo-info.card-text {
+    margin-left: .5em;
+}
+
+small .text-muted,
+small.text-muted b {
+    color: grey;
+}
+
+.projects button.btn.btn-primary-outline {
+    margin-bottom: 1em;
+    font-size: smaller;
+    border-color: #2E3192;
+    color: #2E3192;
+}
+
+.projects button.btn.btn-primary-outline:hover {
+    border-color: #1BFFFF;
+    background-color: #1BFFFF;
+    color: white;
+}
+
+i.fa.fa-star,
+i.fa.fa-code-fork {
+    margin-right: .5rem;
+}
+
+i.fa.fa-code-fork {
+    margin-left: .5rem;
+}
+
+span.lang {
+    margin-left: .5rem;
+}
+
+p.card-text {
+    margin-top: 1em;
+}
+
+p.left {
+    float: left;
+}
+
+p.right {
+    float: right;
+}

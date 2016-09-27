@@ -32,6 +32,11 @@
 				document.getElementById("image1").setAttribute("src", txt);
 				launchEditor("image1", txt);
 			}
+			$(document).ready(function(){
+    				$("button").click(function(){
+        				$("#div1").load("ajax_text.txt");
+    				});
+			});
 		</script>
     </head>
     <body>
@@ -39,5 +44,6 @@
 		<input type="text" id="myurl" placeholder="Enter the url of an image" style="width: 250px; height: 45px"/>
 		<button id="geturl" onclick="myFunct()" style="width: 60px; height: 51px" >GO</button>
 		<img id='image1' src="http://www.stuarthoward.com/images/uploads/projects/1/blank-white__background.png"  alt="Your image"/>
+		<div id="div1"></div>
     </body>
 </html>

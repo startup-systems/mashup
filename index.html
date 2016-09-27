@@ -1,8 +1,89 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Mashup</title>
-  </head>
-  <body>
-  </body>
+<head>
+	<meta charset="utf-8">
+	<title>Google Maps Directions in Israel</title>
+	<style>
+		html, body {
+			height: 100%;
+		}
+		#map {
+			height: 100%;
+		}
+		#float {
+			position: absolute;
+			left: 10%;
+			z-index: 5;
+			padding: 10px;
+			text-align: center;
+			font-family: 'Garamond','Helvetica';
+			line-height: 30px;
+			padding-left: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div id="float">
+		<b>Start: </b>
+		<select id="start">
+			<option value="tel-aviv, israel">Tel-Aviv</option>
+			<option value="jerusalem, israel">Jerusalem</option>
+			<option value="Rishon LeTsiyon, Israel">Rishon LeTsiyon</option>
+			<option value="Ashkelon, israel">Ashkelon</option>
+			<option value="eilat, israel">Eilat</option>
+			<option value="Haifa, Israel">Haifa</option>
+			<option value="Daliyat al-Karmel">Daliyat al-Karmel</option>
+			<option value="Nazareth, israel">Nazareth</option>
+			<option value="Tiberias, Israel">Tiberias</option>
+		</select>
+		<b>End: </b>
+		<select id="end">
+			<option value="tel-aviv, israel">Tel-Aviv</option>
+			<option value="jerusalem, israel">Jerusalem</option>
+			<option value="Rishon LeTsiyon, Israel">Rishon LeTsiyon</option>
+			<option value="Ashkelon, israel">Ashkelon</option>
+			<option value="eilat, israel">Eilat</option>
+			<option value="Haifa, Israel">Haifa</option>
+			<option value="Daliyat al-Karmel">Daliyat al-Karmel</option>
+			<option value="Nazareth, israel">Nazareth</option>
+			<option value="Tiberias, Israel">Tiberias</option>
+		</select>
+	</div>
+	<div id="map"></div>
+	<script>
+		function initMap() {
+			var ds = new google.maps.DirectionsService();
+			var dd = new google.maps.DirectionsRenderer();
+			var map = new google.maps.Map( document.getElementById('map'), {
+				zoom: 7,
+				center: {lat: 31.0461, lng: 34.8516}
+			});
+			dd.setMap(map);
+
+			function route(ds, dd) {
+				ds.route({
+					origin: document.getElementById('start').value,
+					destination: document.getElementById('end').value,
+					travelMode: 'DRIVING'
+				}, function(response, status) {
+					if (status === 'OK') {
+						dd.setDirections(response);
+					} else {
+						window.alert(status);
+					}
+				});
+			}
+			var newRoute = function() {
+				route(ds, dd);
+			};
+			document.getElementById('start').addEventListener('change', newRoute);
+			document.getElementById('end').addEventListener('change', newRoute);
+
+		}
+	</script>
+	<script async defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEfKIjx-VtFiytxC1o9PWYgpUb52mMs6s&callback=initMap">
+</script>
+</body>
 </html>
+

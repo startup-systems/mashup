@@ -2,7 +2,57 @@
 <html>
   <head>
     <title>Mashup</title>
+    <script src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+    <script>
+      var res;
+      $.ajax({
+        //url: 'https://api.foursquare.com/v2/venues/explore',
+        url: 'https://api.foursquare.com/v2/venues/search?client_id=PVVASDR22PNQAJ0LRYBPFVLMGTJWQAEU1Z5FTRS5M4MSHBKQ&client_secret=WY23JCH4S1L4VAEO5FSCQUKCGJXMSJPJR3P53DT1SNYOTOCF&v=20130819&ll=40.7,-74&query=sushi',
+        dataType: 'jsonp',
+        success: function(result){
+          res = result;
+          var len = result.response.venues.length;
+          var temp_string = "";
+          for(var i = 0; i < 5; i++) {
+            console.log(result.response.venues[i].name);
+            temp_string = temp_string + result.response.venues[i].name + '; ';
+            $("#name").html(temp_string);
+          }
+        }});
+
+      $(document).ready(function() {
+          $("#btn1").click(function() {
+            $("#httpaddress").html("The website of your target restaurant is: ");
+            var len = res.response.venues.length;
+            //console.log(len);
+            for (var j = 0; j < len; j++) {
+              var cur = res.response.venues[j];
+              console.log("cur is " + cur.name);
+              console.log("place is " + $("#place").val());
+              if (cur.name === $("#place").val()) {
+                $("#httpaddress").html(cur.url);
+                //console.log(cur.url);
+                break;
+
+              } else {
+                //console.log('Not in records, please input valid name from listed above');
+                $("#errormessage").html("Sorry, but your input is not in records, please input valid name from listed above.");
+              }
+
+            }
+
+          });
+      });
+
+    </script>
   </head>
   <body>
+    <div>Show me the top 5 sushi places people go to:</div>
+    <div id="name"></div>
+    Type in your target sushi place name from above to find its website (such as: Blue Ribbon Sushi): <input name="place" type=text size="30" id="place"/>
+    <div id="httpaddress"></div>
+    <div id="errormessage"></div>
+    <button id="btn1">search</button>
   </body>
+
 </html>

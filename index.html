@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Mashup</title>
     <meta charset="utf-8">
-    <title> TRY googlemap </title>
-    <meta charset="utf-8">
-  	<meta name="viewport" content="width=device-width">
+    <title>TRY googlemap</title>
+    <meta ame="viewport" content="width=device-width",charset="utf-8">
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>   
     <script type="text/javascript">  
        function Map(){
@@ -15,10 +13,6 @@
              success: function (data) {
                  var result = JSON.parse(data);
                  alert(result.results[0].geometry);
-             },
-             success: function (data) {
-               $("#resultarea").text(data);
-               var result = JSON.parse(data);
              },
              error: function () {
                  alert("Wrong input!");

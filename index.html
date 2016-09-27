@@ -5,7 +5,7 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     	<style type="text/css">
-          title{
+          heading{
             font: 50px;
             color: white;  
             text-align: center;
@@ -58,6 +58,15 @@
             alert('Could not find address for the following reason: ' + status);
           }
         });
+         var panorama = new google.maps.StreetViewPanorama(
+            document.getElementById('pano'), {
+              position: results[0].geometry.location,
+              pov: {
+                heading: 34,
+                pitch: 10
+              }
+            });
+        map.setStreetView(panorama);
       }
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -69,15 +78,7 @@
         document.getElementById('submit').addEventListener('click', function() {
           geocodeAddress(geocoder, map);
         });
-         var panorama = new google.maps.StreetViewPanorama(
-            document.getElementById('pano'), {
-              position: results[0].geometry.location,
-              pov: {
-                heading: 34,
-                pitch: 10
-              }
-            });
-        map.setStreetView(panorama);
+        
         
       }
     </script>

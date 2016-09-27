@@ -39,19 +39,6 @@
         <div id="mapc"></div>
         <button id="btn">load map</button>
 		</div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script>
-    document.getElementById("btn").onclick = function(){
-        $.ajax({
-           url: 'https://maps.googleapis.com/maps/api/directions/json?origin=75+9th+Ave+New+York,+NY&destination=MetLife+Stadium+1+MetLife+Stadium+Dr+East+Rutherford,+NJ+07073&key=AIzaSyC-0LDChA3wQZ9RG0MxQ289VEvJ9Fpgp0c',
-           dataType: 'json',
-           success: function(result){
-
-            console.log(result);
-           }
-         });
-       };
-    </script>
 <script>
     var map;
 

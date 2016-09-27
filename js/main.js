@@ -1,6 +1,6 @@
 ///Google Map API:
 
-/*function initMap(ipLng, ipLat){
+function initMap(ipLng, ipLat){
   var map;
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: ipLat, lng: ipLng},
@@ -10,7 +10,7 @@
           position: {lat: ipLat, lng: ipLng},
           map: map
         });
-}*/
+}
 //WHOIS API:
 
 function main(){
@@ -25,15 +25,7 @@ function main(){
       initMap(data.lon, data.lat);
       console.log(data.lon, data.lat);
     });
-    var map;
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: ipLat, lng: ipLng},
-      zoom: 8
-    });
-    var marker = new google.maps.Marker({
-            position: {lat: ipLat, lng: ipLng},
-            map: map
-          });
+
 
 /*    $.ajax({
       url: "http://ip-api.com/json/?callback=?",

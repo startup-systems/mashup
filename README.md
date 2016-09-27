@@ -9,4 +9,5 @@ This project is a mashup using Pokeapi
 
 * Enter any number from 1 and the pokemon's info will be displayed
 
+![ScreenShot](demo.png)
 

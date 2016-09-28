@@ -13,7 +13,7 @@
 		var address= document.getElementById("newadd").value;
 		$.ajex({
 			dataType: 'text',
-			url: "https://maps.googleapis.com/maps/api/js?key=AIzaSyCBRJ-TOtZaaHlt7QYxkhPPfO0IhyfDPik&callback=initMap",
+			url: "https://maps.googleapis.com/maps/api/js?key=AIzaSyCBRJ-TOtZaaHlt7QYxkhPPfO0IhyfDPik",
 			type: "GET",
 			success: function(data){
 						$("#resultarea").text(data);
@@ -49,7 +49,7 @@
         });
       }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBRJ-TOtZaaHlt7QYxkhPPfO0IhyfDPik&callback=initMap"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBRJ-TOtZaaHlt7QYxkhPPfO0IhyfDPik"
     async defer></script>
   
   </body>

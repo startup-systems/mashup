@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Mashup</title>
-	<script type = "text/javascript" 
-	src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
-	</script>
+<head>
+<title>Mashup</title>
+<script type = "text/javascript" 
+src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+</script>
 
-	<script type = "text/javascript" language = "javascript">
-		$(document).ready(function() {
-			var i = -1;
-				$("#driver").click(function(event){
-				i = i+1;
-				$.getJSON("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2015-9-27&api_key=cypvw52ysZT16N9HAFuh5bEDXb8lvDmw90ff4v26", function(json) { 
+<script type = "text/javascript" language = "javascript">
+$(document).ready(function() {
+var i = -1;
+$("#driver").click(function(event){
+i = i+1;
+$.getJSON("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2015-9-27&api_key=cypvw52ysZT16N9HAFuh5bEDXb8lvDmw90ff4v26", function(json) { 
 
-				$('#stage').append('<img src="' + json.photos[i].img_src + '" width="350">');
-				$('#stage').append('<p> Camera used: ' + json.photos[i].camera.full_name + '</p>');
+$('#stage').append('<img src="' + json.photos[i].img_src + '" width="350">');
+$('#stage').append('<p> Camera used: ' + json.photos[i].camera.full_name + '</p>');
 
-				})
-			});
-		});
-	</script>
-  </head>
-  <body>
-	<p>This displays the latest photos taken by the Mars Curiosity Rover.</p>
-	<p>Click on the button to load the next one.</p>
-	<input type = "button" id = "driver" value = "Load Photo" />
-      <div id = "stage">
-         
-      </div>
-			
-      
-  </body>
+})
+});
+});
+
+</script>
+<!-- $.ajax -->
+</head>
+<body>
+<p>This displays the latest photos taken by the Mars Curiosity Rover.</p>
+<p>Click on the button to load the next one.</p>
+<input type = "button" id = "driver" value = "Load Photo" />
+<div id = "stage">
+
+</div>
+
+
+</body>
 </html>

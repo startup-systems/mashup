@@ -6,6 +6,8 @@
 
 Showcasing my GitHub projects with `GitHub API`.
 
+![app](assets/img/app.png)
+
 ### Check out the project [here](http://fvcproductions.github.io/mashup)! 😎
 
 ## Contributing

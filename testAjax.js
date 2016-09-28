@@ -25,7 +25,13 @@ const filePatterns = () => {
   return patterns;
 };
 
-const matchAjax = /((\$|jQuery)\.(ajax|get(JSON|Script)?)|new XMLHttpRequest)\(/;
+// covers:
+// * http://api.jquery.com/category/ajax/
+// * https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
+// * https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+// * https://developers.google.com/maps/documentation/javascript/3.exp/reference
+// * https://developers.google.com/api-client-library/javascript/
+const matchAjax = /((\$|\bjQuery)\.(ajax|get(JSON|Script)?)|new XMLHttpRequest|fetch)\(|\bnew google\.|\bgapi\.|\$http\b/;
 
 const isAjaxCalled = source => {
   return matchAjax.test(source);

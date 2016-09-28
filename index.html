@@ -22,6 +22,20 @@
 </script>
 
  <script>
+    var getArtistDetails = function(url) {
+      $.ajax({
+        url : url,
+        type : 'GET',
+        dataType:'json',
+        success : function(responseJSON) {
+          console.log(responseJSON);
+        },
+        error : function(request,error) {
+            console.log("Request: "+JSON.stringify(request));
+        }
+      });
+    };
+
     var searchForArtist = function(artist) {
       $.ajax({
         url : 'https://api.spotify.com/v1/search?q=' + artist + '&type=artist',
@@ -37,22 +51,8 @@
       });
     };
 
-    var getArtistDetails = function(url) {
-      $.ajax({
-        url : url,
-        type : 'GET',
-        dataType:'json',
-        success : function(responseJSON) {
-          console.log(responseJSON);
-        },
-        error : function(request,error) {
-            console.log("Request: "+JSON.stringify(request));
-        }
-      });
-    }
-
+    
     searchForArtist('Michael Jackson');
-
     </script>
 
 </body>

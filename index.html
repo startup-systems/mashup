@@ -6,7 +6,7 @@
 
     <script>
       function getClosestLists(lat, long) {
-        if ( (lat == '') || (long == '') ) {
+        if ( (lat === '') || (long === '') ) {
           alert("You must input a set of coordinates");
           return;
         }
@@ -14,12 +14,12 @@
         var url = "https://openapi.etsy.com/v2/listings/active.json?api_key=" + api_key + "&lat=" + lat + "&lon=" + long;
         console.log(url);
         $.get('https://jsonp.afeld.me/?url=' + url, function( data ) {
-            destiny = $("#results")
-            destiny.append("<h1>Etsy found " + data.count +" results </h1>")
+            destiny = $("#results");
+            destiny.append("<h1>Etsy found " + data.count +" results </h1>");
             $.each(data.results, function(key, value) {
                 destiny.append("<p>Title: <a href='" + value.url + "'>" + value.title + "</a><br>Price: " + value.price + "</p>");
-            })
-        })
+            });
+        });
       }
 
       function getZipCodeInformation() {
@@ -28,13 +28,13 @@
         var url = "https://www.zipcodeapi.com/rest/" + api_key + "/info.json/" + zip + "/degrees";
         $.get('https://jsonp.afeld.me/?url=' + url, function( data ) {
             //getDemographicData(data.zip_codes.join(","));
-            getClosestLists(data.lat, data.lng)
-        })
+            getClosestLists(data.lat, data.lng);
+        });
       }
 
       $(document).ready( function() {
         $("#searchProductsBtn").bind("click", getZipCodeInformation);
-      })
+      });
     </script>
 
   </head>

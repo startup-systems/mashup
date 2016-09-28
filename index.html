@@ -9,7 +9,7 @@
   </style>
 </head>                                                                                             
 <body> 
-  Mashup: google knowledge graph api
+  Mashup: wikipedia api
     <div class="wrapper">
         <input type="text" id="search" class="input- ui-autocomplete-input ui-autocomplete-loading" placeholder="Enter keyword" autocomplete="off">
         <button id="action-button">Search</button>
@@ -17,7 +17,7 @@
       <p id="quote"></p>
       <script type="text/javascript" src="https://code.jquery.com/jquery-1.6.4.js"></script>
       <script>
-     $(document).ready(function(){
+     $(document.body).ready(function(){
  
     $.ajax({
         type: "GET",

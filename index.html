@@ -18,14 +18,14 @@
 
 </head>
 
-<body ng-app="stockApp" ng-controller="stockCtrl">
+<body data-ng-app="stockApp" data-ng-controller="stockCtrl">
 
 <div class="container-fluid  text-center">
 <h1 >Can I afford this stock?</h1>
 
-<span>Enter Ticker:</span><input ng-model="stockName">
-<span>Enter Price:</span><input ng-model="desiredPrice">
-<button class="glyphicon glyphicon-search" ng-click="runCall()"></button>
+<span>Enter Ticker:</span><input data-ng-model="stockName">
+<span>Enter Price:</span><input data-ng-model="desiredPrice">
+<button class="glyphicon glyphicon-search" data-ng-click="runCall()"></button>
 
 <h6>Built By Andrew Mendez, uses the markit on demand api</h6>
 

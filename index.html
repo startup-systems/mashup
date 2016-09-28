@@ -3,20 +3,74 @@
   <head>
     <title>Mashup</title>
     <link rel="stylesheet" type="text/css" href="css/index.css">
-    <script src="vendor/angular.min.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
+    <script src="vendor/adata-ngular.min.js"></script>
+    <!-- <script type="text/javascript" src="js/index.js"></script> -->
+    <script type="text/javascript">
+    	var app = angular.module('myApp', []);
+
+app.config(['$httpProvider', function($httpProvider) {
+        $httpProvider.defaults.useXDomain = true;
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    }
+]);
+
+app.controller('myCtrl', function($scope, $http) {
+
+    $scope.myStocks = [];
+
+    $scope.findStock = function(){
+    	$http({
+	    	method: "GET",
+	    	url: "http://dev.markitondemand.com/MODApis/Api/v2/Lookup/json",
+	    	headers: {
+	    	'Content-Type': 'application/jsonp'
+	  		},
+	  		params: { input: $scope.searchStock}
+	    }).then(function Success(response) {
+	    	console.log("Success",response);
+	    	$scope.searchResults = response.data;
+	    }, function Error(response){
+	    	console.log("Error", response);
+	    });
+	    $scope.searchStock = '';
+    };
+
+    $scope.addStock = function(index) {
+    	console.log("Clicked", $scope.searchResults[index].Name);
+    	$scope.getQuote($scope.searchResults[index].Symbol);
+    };
+
+    $scope.getQuote = function(stock) {
+    	$http({
+    		method: "GET",
+    		url: "http://dev.markitondemand.com/Api/v2/Quote/json",
+    		headers: {
+	    	'Content-Type': 'application/jsonp'
+	  		},
+	  		params: { symbol: stock}
+    	}).then(function Success(response) {
+    		console.log(response.data);
+    		$scope.myStocks.push(response.data);
+    		$scope.searchResults = [];
+    	}, function Error(response){
+    		console.log("Couldn't get Quote!");
+    	});
+    };
+});
+    </script>
+
   </head>
   <body>
 
-  	<div ng-app="myApp" ng-controller="myCtrl">
+  	<div data-ng-app="myApp" data-ng-controller="myCtrl">
   	<div class="tickr">Tickr</div>
 
 	  	<div class="find">
-	  		<input ng-model="searchStock" placeholder="Find Stocks" class="findBar"><button ng-click="findStock()" class="goButton">Go</button> 
+	  		<input value="submit" data-ng-model="searchStock" placeholder="Find Stocks" class="findBar"><button data-ng-click="findStock()" class="goButton">Go</button> 
 	  	</div>
 
-	  	<div ng-repeat="stock in searchResults" ng-if="searchResults">
-	  		<div class="results" ng-click="addStock($index)" ng-if="stock.Name != ''">{{stock.Name}}</div>
+	  	<div data-ng-repeat="stock in searchResults" data-ng-if="searchResults">
+	  		<div class="results" data-ng-click="addStock($index)" data-ng-if="stock.Name != ''">{{stock.Name}}</div>
 	  	</div>
 
 	  	<table>
@@ -26,7 +80,7 @@
 		    <th>Low</th>
 		    <th>Last Price</th>
 		  </tr>
-		  <tr ng-repeat="myStock in myStocks">
+		  <tr data-ng-repeat="myStock in myStocks">
 		    <td>{{myStock.Symbol}}</td>
 		    <td>{{myStock.High}}</td>
 		    <td>{{myStock.Low}}</td>
@@ -38,4 +92,3 @@
 
   </body>
 </html>
-

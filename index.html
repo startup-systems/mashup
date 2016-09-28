@@ -3,23 +3,25 @@
   <head>
     <title>Mashup</title>
 	
-	<style type="text/css">
-	html, body { height: 80%; margin: 0; padding: 0; }
+	<style> 
+	html, body { height: 80%; margin: 5; padding: 0; }
 	#map { height: 80%; }
 	</style>
+	
+	
  <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 	<script type="text/javascript">
 		fuction reset(){
 		var address= document.getElementById("newadd").value;
 		$.ajex({
 			dataType: 'text',
-			url: "https://maps.googleapis.com/maps/api/js?key=AIzaSyCBRJ-TOtZaaHlt7QYxkhPPfO0IhyfDPik",
+			url: "https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key=AIzaSyCBRJ-TOtZaaHlt7QYxkhPPfO0IhyfDPik",
 			type: "GET",
 			success: function(data){
-							$("#resultarea").text(data);
+								$("#resultarea").text(data);
 						var result= JSON.parse(data);
 						},
-						error:fuction(){
+						error: fuction(){
 							alert("Invalid");}
 		
 		}

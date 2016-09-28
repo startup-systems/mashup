@@ -1,5 +1,5 @@
-*.min.js
-.git/
-jquery*.js
-node_modules/
-vendor/
+**/*.min.js
+.git/**
+**/jquery*.js
+node_modules/**
+vendor/**

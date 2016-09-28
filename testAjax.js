@@ -20,18 +20,17 @@ const getJSHintExcludes = () => {
 const filePatterns = () => {
   let patterns = getJSHintExcludes();
   const currentFile = currentFileRelative();
-  patterns.unshift('*.html', '*.js', `!${currentFile}`);
+  patterns.unshift('**/*.html', '**/*.js', `!${currentFile}`);
 
   return patterns;
 };
 
 // covers:
 // * http://api.jquery.com/category/ajax/
-// * https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
+// * using XMLHttpRequest or some library
 // * https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-// * https://developers.google.com/maps/documentation/javascript/3.exp/reference
 // * https://developers.google.com/api-client-library/javascript/
-const matchAjax = /((\$|\bjQuery)\.(ajax|get(JSON|Script)?)|new XMLHttpRequest|fetch)\(|\bnew google\.|\bgapi\.|\$http\b/;
+const matchAjax = /(\$|\bjQuery)\.(ajax|get(JSON|Script)?)\(|\bnew |fetch\(|\bgapi\.|\$http\b/;
 
 const isAjaxCalled = source => {
   return matchAjax.test(source);

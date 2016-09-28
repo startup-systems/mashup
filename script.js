@@ -37,6 +37,7 @@ function getCompanyInfo(companyName) {
             if (!stockFound(data)){
                 console.log('Error, stock not found!');
                 $('#error').css('visibility', 'visible');
+                $('#result').css('visibility', 'hidden');
 
                 showProgressCircle(false);
                 return;

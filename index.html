@@ -1,14 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Welcome to Gautam's Map Quest</title>
+    <title>Gautam's Map Quest</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     	<style type="text/css">
-          #main{
-            font: 50px;
-            color: white;  
-            text-align: center;
           }
           html,body{
           background-color: red;
@@ -19,7 +15,7 @@
           #map, #pano {
           height:50%;
           width:50%;
-          left:25%;
+          left:75%;
           top:25%;
           }
           #floating-panel{
@@ -35,6 +31,10 @@
           line-height: 30px;
           padding-left: 10px;
           }
+         #main{
+            font: 50px;
+            color: black;  
+            text-align: center;
         </style>
   </head>
   <body>
@@ -59,6 +59,24 @@
             alert('Could not find address for the following reason: ' + status);
           }
         });
+        var panorama = new google.maps.StreetViewPanorama(
+            document.getElementById('pano'), {
+              position: results[0].geometry.location,
+              pov: {
+                heading: 34,
+                pitch: 10
+              }
+            });
+        map.setStreetView(panorama);
+        var panorama = new google.maps.StreetViewPanorama(
+            document.getElementById('pano'), {
+              position: results[0].geometry.location,
+              pov: {
+                heading: 34,
+                pitch: 10
+              }
+            });
+        map.setStreetView(panorama);
       }
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -70,16 +88,7 @@
         document.getElementById('submit').addEventListener('click', function() {
           geocodeAddress(geocoder, map);
         });
-        var panorama = new google.maps.StreetViewPanorama(
-            document.getElementById('pano'), {
-              position: results[0].geometry.location,
-              pov: {
-                heading: 34,
-                pitch: 10
-              }
-            });
-        map.setStreetView(panorama);
-        
+
       }
     </script>
     <script async defer

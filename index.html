@@ -17,8 +17,9 @@
       <p id="quote"></p>
       <script type="text/javascript" src="https://code.jquery.com/jquery-1.6.4.js"></script>
       <script>
-      $('#action-button').click(function() {
-     $.ajax({
+     $(document).ready(function(){
+ 
+    $.ajax({
         type: "GET",
         url: "http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=Jimi_Hendrix&callback=?",
         contentType: "application/json; charset=utf-8",
@@ -43,7 +44,7 @@
         error: function (errorMessage) {
         }
     });
-}); 
+});
     </script>
                                                                    
 </body>                                                                                             

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!-- code from: https://developers.google.com/maps/documentation/javascript/examples/control-custom-->
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Mashup</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      var map;
+      var chicago = {lat: 41.85, lng: -87.65};
+      var ny = {lat: 40.7128, lng: -74.0059};
+      var hk = {lat: 22.2762, lng: 114.1826};
+
+      /**
+       * The CenterControl adds a control to the map that recenters the map on
+       * a location as defined.
+       * This constructor takes the control DIV as an argument.
+       * @constructor
+       */
+      function CenterControl(controlDiv, map) {
+
+        // Set CSS for the control border.
+        var controlUI = document.createElement('div');
+        controlUI.style.backgroundColor = '#fff';
+        controlUI.style.border = '2px solid #fff';
+        controlUI.style.borderRadius = '3px';
+        controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+        controlUI.style.cursor = 'pointer';
+        controlUI.style.marginBottom = '22px';
+        controlUI.style.textAlign = 'center';
+        controlUI.title = 'Click to figure out where Kuljot is today!';
+        controlDiv.appendChild(controlUI);
+
+        // Set CSS for the control interior.
+        var controlText = document.createElement('div');
+        controlText.style.color = 'rgb(250,25,25)';
+        controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+        controlText.style.fontSize = '16px';
+        controlText.style.lineHeight = '38px';
+        controlText.style.paddingLeft = '5px';
+        controlText.style.paddingRight = '5px';
+        controlText.innerHTML = 'Click to learn where Kuljot is today?';
+        controlUI.appendChild(controlText);
+
+        // Setup the click event listeners: simply set the map to Chicago.
+        controlUI.addEventListener('click', function() {
+          map.setCenter(ny);
+        });
+
+      }
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 13,
+          center: hk
+        });
+
+        // Create the DIV to hold the control and call the CenterControl()
+        // constructor passing in this DIV.
+        var centerControlDiv = document.createElement('div');
+        var centerControl = new CenterControl(centerControlDiv, map);
+
+        centerControlDiv.index = 1;
+        map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwoit7uhT2cNBvBkE2TYzkZnacV-NzGl4&callback=initMap">
+    </script>
+  </body>
+</html>

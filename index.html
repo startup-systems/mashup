@@ -10,12 +10,7 @@
   </style>
 </head>                                                                                             
 <body> 
-  Mashup: google knowledge graph api
-   <div class="wrapper">
-        <input type="text" id="search" class="input- ui-autocomplete-input ui-autocomplete-loading" placeholder="Enter keyword" autocomplete="off">
-        <button id="action-button">Search</button>
-      </div>
-      <p id="quote"></p>
+  
   <script>                                                                                            
  var service_url = 'https://kgsearch.googleapis.com/v1/entities:search';                            
  var params = {                                                                                     
@@ -26,7 +21,7 @@
  };                                                                                                 
  $.getJSON(service_url + '?callback=?', params, function(response) {                                
   $.each(response.itemListElement, function(i, element) {                                           
-   $('<div>', {text:element.result.name}).appendTo(document.body);                            
+   $('<div>', {text:element['result']['name']}).appendTo(document.body);                            
   });                                                                                               
  });                                                                                                
 </script>  

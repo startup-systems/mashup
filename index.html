@@ -4,7 +4,7 @@
 
 <head >
  
- 
+ <title>Mashup</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
@@ -33,10 +33,6 @@
 <div>{{stockDecision}}</div>
 </div>
 
-</body>
-
-
-</html>
 
 <script>
 var app = angular.module('stockApp', []);
@@ -52,16 +48,16 @@ http://stackoverflow.com/questions/12066002/parsing-jsonp-http-jsonp-response-in
 app.controller('stockCtrl', function($scope, $http) {
 
 
-	$scope.runCall=function(){
-		//alert("Whoop!")
-		console.log($scope.stockName)
-		  $http.jsonp("http://dev.markitondemand.com/MODApis/Api/v2/Quote/jsonp?symbol="+$scope.stockName+"&callback=JSON_CALLBACK")
+    $scope.runCall=function(){
+        //alert("Whoop!")
+        console.log($scope.stockName)
+          $http.jsonp("http://dev.markitondemand.com/MODApis/Api/v2/Quote/jsonp?symbol="+$scope.stockName+"&callback=JSON_CALLBACK")
     .success(function(data,err){
-    	console.log(data)
+        console.log(data)
         console.log(data.LastPrice);
 
         if(data.Message>""){
-        	$scope.stockHere = "Re-Enter Ticker"
+            $scope.stockHere = "Re-Enter Ticker"
         }
         else{
 
@@ -69,10 +65,10 @@ app.controller('stockCtrl', function($scope, $http) {
 
         //Check if last stock price is within your budget
         if(data.LastPrice<=$scope.desiredPrice){
-        	$scope.stockDecision="YAZ BOO!"
+            $scope.stockDecision="YAZ BOO!"
         }
         else{
-        	$scope.stockDecision="NO BOO :("
+            $scope.stockDecision="NO BOO :("
         }
     }
 
@@ -80,8 +76,13 @@ app.controller('stockCtrl', function($scope, $http) {
     })
 
 
-	}
+    }
 
   
 });
 </script>
+</body>
+
+
+</html>
+

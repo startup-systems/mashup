@@ -21,17 +21,17 @@
       $('#action-button').click(function() {
     $.ajax({
         var service_url = 'https://kgsearch.googleapis.com/v1/entities:search';                            
- var params = {                                                                                     
-  'query': 'Taylor Swift',                                                                          
-  'limit': 10,                                                                                      
-  'indent': true,                                                                                   
-  'key' : 'AIzaSyB2yeh3nVxU-ay9JDxiQISCsgA66aGqMCI',                                                
- };                                                                                                 
- $.getJSON(service_url + '?callback=?', params, function(response) {                                
-  $.each(response.itemListElement, function(i, element) {                                           
-   $('<div>', {text:element.result.name}).appendTo(document.body);                            
-  });                                                                                               
- });            
+        var params = {                                                                                     
+          'query': 'Taylor Swift',                                                                          
+          'limit': 10,                                                                                      
+          'indent': true,                                                                                   
+          'key' : 'AIzaSyB2yeh3nVxU-ay9JDxiQISCsgA66aGqMCI',                                                
+         };                                                                                                 
+         $.getJSON(service_url + '?callback=?', params, function(response) {                                
+            $.each(response.itemListElement, function(i, element) {                                           
+            $('<div>', {text:element['result']['name']}).appendTo(document.body);                            
+        });                                                                                               
+      });            
     </script>                                                                         
 </body>                                                                                             
 </html>                                                                                             

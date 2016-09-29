@@ -50,33 +50,33 @@ app.controller('stockCtrl', function($scope, $http) {
 
     $scope.runCall=function(){
         //alert("Whoop!")
-        console.log($scope.stockName)
+        console.log($scope.stockName);
           $http.jsonp("http://dev.markitondemand.com/MODApis/Api/v2/Quote/jsonp?symbol="+$scope.stockName+"&callback=JSON_CALLBACK")
     .success(function(data,err){
-        console.log(data)
+        console.log(data);
         console.log(data.LastPrice);
 
         if(data.Message>""){
-            $scope.stockHere = "Re-Enter Ticker"
+            $scope.stockHere = "Re-Enter Ticker";
         }
         else{
 
-        $scope.stockHere = "Last Trading Price:"+data.LastPrice
+        $scope.stockHere = "Last Trading Price:"+data.LastPrice;
 
         //Check if last stock price is within your budget
         if(data.LastPrice<=$scope.desiredPrice){
-            $scope.stockDecision="YAZ BOO!"
+            $scope.stockDecision="YAZ BOO!";
         }
         else{
-            $scope.stockDecision="NO BOO :("
+            $scope.stockDecision="NO BOO :(";
         }
     }
 
 
-    })
+    });
 
 
-    }
+    };
 
   
 });

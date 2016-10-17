@@ -5,7 +5,7 @@ from pytest_ext import TestDef
 #PYTESTS = TestDef.collect('..')
 TOTAL_BASE_SCORE = 100
 SCRIPT_TEST = {'validate_html': 10, 'lint_js': 10, 'check_ajax': 80}
-TEST_PASS = ['HTML validation', 'JavaScript linting', 'AJAX']
+TEST_PASS = {'validate_html': 'HTML validation', 'lint_js': 'JavaScript linting', 'check_ajax': 'AJAX'}
 
 
 def verify_totals():
@@ -49,10 +49,10 @@ class Scorer:
         comment = ''
         reports = self.pytest_results()
         for report in reports:
-            for index, tester in enumerate(SCRIPT_TEST):
+            for tester in SCRIPT_TEST:
                 if tester in report:
                     score = SCRIPT_TEST[tester] if int(report[-1]) == 0 else 0
                     total_score += score
-                    comment += '{test}:{score} '.format(test=TEST_PASS[index], score=score)
+                    comment += '{test}:{score} '.format(test=TEST_PASS[tester], score=score)
                     break
         return total_score, comment

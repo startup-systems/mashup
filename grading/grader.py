@@ -9,7 +9,6 @@ def grade(pull_request):
     pull_request.check_test_modifications()
 
     scorer = Scorer(pull_request)
-    score = scorer.compute()
-    print("score:", score)
-
-    return score
+    score, comment = scorer.compute()
+    print("score:{s} comment:{c}".format(s=score, c=comment))
+    return score, comment

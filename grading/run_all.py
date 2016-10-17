@@ -42,9 +42,10 @@ if __name__ == '__main__':
 
             print(pr.url() + '/files')
 
-            score = grader.grade(pr)
+            score, comment = grader.grade(pr)
             # TODO put in reasoning for score
-            resultwriter.writerow([net_id, score, ""])
+
+            resultwriter.writerow([net_id, score, comment])
 
             submitted_net_ids.add(net_id)
 

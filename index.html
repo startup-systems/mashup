@@ -1,8 +1,88 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Mashup</title>
-  </head>
-  <body>
-  </body>
+
+<html >
+
+<head >
+ 
+ <title>Mashup</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+	<style>
+	.container-fluid {
+    padding-top: 70px;
+    padding-bottom: 70px;
+	}
+	</style>
+
+</head>
+
+<body data-ng-app="stockApp" data-ng-controller="stockCtrl">
+
+<div class="container-fluid  text-center">
+<h1 >Can I afford this stock?</h1>
+
+<span>Enter Ticker:</span><input data-ng-model="stockName">
+<span>Enter Price:</span><input data-ng-model="desiredPrice">
+<button class="glyphicon glyphicon-search" data-ng-click="runCall()"></button>
+
+<h6>Built By Andrew Mendez, uses the markit on demand api</h6>
+
+<div>{{stockHere}}</div>
+<div>{{stockDecision}}</div>
+</div>
+
+
+<script>
+var app = angular.module('stockApp', []);
+
+/*
+You don't have to parse the data. It is already a valid JavaScript object. For instance, to print the description property for the first object inside someFunction
+*/
+
+/* SOLUTION
+
+http://stackoverflow.com/questions/12066002/parsing-jsonp-http-jsonp-response-in-angular-js
+*/
+app.controller('stockCtrl', function($scope, $http) {
+
+
+    $scope.runCall=function(){
+        //alert("Whoop!")
+        console.log($scope.stockName);
+          $http.jsonp("http://dev.markitondemand.com/MODApis/Api/v2/Quote/jsonp?symbol="+$scope.stockName+"&callback=JSON_CALLBACK")
+    .success(function(data,err){
+        console.log(data);
+        console.log(data.LastPrice);
+
+        if(data.Message>""){
+            $scope.stockHere = "Re-Enter Ticker";
+        }
+        else{
+
+        $scope.stockHere = "Last Trading Price:"+data.LastPrice;
+
+        //Check if last stock price is within your budget
+        if(data.LastPrice<=$scope.desiredPrice){
+            $scope.stockDecision="YAZ BOO!";
+        }
+        else{
+            $scope.stockDecision="NO BOO :(";
+        }
+    }
+
+
+    });
+
+
+    };
+
+  
+});
+</script>
+</body>
+
+
 </html>
+

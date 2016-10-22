@@ -1,0 +1,13 @@
+body {
+    padding-top: 5rem;
+}
+.starter-template {
+    padding: 3rem 1.5rem;
+    text-align: center;
+}
+
+#progreso {
+    margin: 20px;
+    width: 200px;
+    height: 100px;
+}

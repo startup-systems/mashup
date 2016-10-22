@@ -1,8 +1,100 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Mashup</title>
-  </head>
-  <body>
-  </body>
+<!-- saved from url=(0059)http://v4-alpha.getbootstrap.com/examples/starter-template/ -->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="http://v4-alpha.getbootstrap.com/favicon.ico">
+
+    <title>Company Researcher</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <!-- Custom styles for this template -->
+    <link href="style.css" rel="stylesheet">
+<body>
+
+<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+    <a class="navbar-brand" href="#">Company Researcher</a>
+    <ul class="nav navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+        </li>
+    </ul>
+</nav>
+
+<div class="container">
+
+    <div class="starter-template">
+        <h1>Type the stock symbol of a company</h1>
+        <p class="lead">
+        <div class="form-group">
+            <input type="text" class="form-control" id="companyinput"/>
+        </div>
+
+        <h2 style="color: red; visibility: hidden" id="error">Type stock symbol doesn't exist in the data base</h2>
+
+
+        <div id="progreso" style="visibility: hidden"></div>
+
+    </div>
+
+
+
+
+
+
+
+    <!-- Example row of columns -->
+    <div id='result' class="row" style="visibility: hidden">
+        <div class="col-md-4">
+            <h2>Stock Information</h2>
+            <p><b>Symbol:</b><span id="symbol"></span></p>
+            <p><b>Description:</b><span id="description"></span></p>
+            <p><b>Last:</b><span id="last"></span></p>
+            <p><a class="btn btn-secondary" href="#" role="button" id="stockdetails">View details &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>News</h2>
+            <p>Take better investment decisions reviewing all the company related news</p>
+            <p><a class="btn btn-secondary" href="#" role="button" id="news">View news &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>More info</h2>
+            <p>Get more information about the company in wikipedia</p>
+            <p><a class="btn btn-secondary" href="#" role="button" id="wikipedia">View article &raquo;</a></p>
+        </div>
+    </div>
+
+    <hr>
+
+    <footer>
+        <p>&copy; Company Researcher 2016</p>
+    </footer>
+
+</div><!-- /.container -->
+
+
+<script src="vendor/jquery.min.js"></script>
+<script src="vendor/tether.min.js"></script>
+<script src="vendor/bootstrap.min.js"></script>
+<script src="vendor/progressbar.js"></script>
+
+<script src="script.js"></script>
+
+</body>
 </html>

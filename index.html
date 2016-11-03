@@ -1,8 +1,29 @@
 <!DOCTYPE html>
+<!-- Luis Serota 2016 -->
+<!-- Startup Systems and Engineering -->
+
+<!-- Used MapBox and wunderground weather api -->
+<!-- Displays the temperature at the location on the map where clicked -->
 <html>
   <head>
-    <title>Mashup</title>
+    <title>Luis Serota Mashup</title>
+    <!-- jQuery for AJAX Calls -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
+    <!-- MapBox API -->
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.24.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.24.0/mapbox-gl.css' rel='stylesheet' />
+
+    <style type="text/css">
+    	#map { position:fixed; top:100px;left:0; height:calc(100% - 100px); width:100%; }
+    	h1, h6 {
+    		text-align: center;
+    	}
+    </style>
   </head>
   <body>
+    <h1>Click anywhere on the map to get the temparature at that location</h1>
+    <h6>Luis Serota</h6>
+    <div id='map'></div>
+    <script type="text/javascript" src="index.js"></script>
   </body>
 </html>

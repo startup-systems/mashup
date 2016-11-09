@@ -1,8 +1,98 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Mashup</title>
+    <title>Gautam's Map Quest</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    	<style type="text/css">
+          }
+          html,body{
+          background-color: red;
+          height: 100%;
+          width:100%;
+          text-align:center;
+          }
+          #map, #pano {
+          height:50%;
+          width:50%;
+          left:75%;
+          top:25%;
+          }
+          #floating-panel{
+          position: absolute;
+          top: 80%;
+          left: 50%;
+          z-index: 5;
+          background-color: #fff;
+          padding: 5px;
+          border: 1px solid #999;
+          text-align: center;
+          font-family: 'Roboto','sans-serif';
+          line-height: 30px;
+          padding-left: 10px;
+          }
+         #main{
+            font: 50px;
+            color: black;  
+            text-align: center;
+        </style>
   </head>
   <body>
+    <div id="main">Welcome to Gautam's Map Quest</div>
+    <div id="floating-panel">
+      <input id="address" type="text" value="">
+      <input id="submit" type="button" value="Find Location">
+    </div>
+    <div id="map"></div>
+    <div id="pano"></div>
+    <script>
+      function geocodeAddress(geocoder, resultsMap) {
+        var address = document.getElementById('address').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location
+            });
+          } else {
+            alert('Could not find address for the following reason: ' + status);
+          }
+        });
+        var panorama = new google.maps.StreetViewPanorama(
+            document.getElementById('pano'), {
+              position: results[0].geometry.location,
+              pov: {
+                heading: 34,
+                pitch: 10
+              }
+            });
+        map.setStreetView(panorama);
+        var panorama = new google.maps.StreetViewPanorama(
+            document.getElementById('pano'), {
+              position: results[0].geometry.location,
+              pov: {
+                heading: 34,
+                pitch: 10
+              }
+            });
+        map.setStreetView(panorama);
+      }
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 8,
+          center: {lat: -34.397, lng: 150.644}
+        });
+        var geocoder = new google.maps.Geocoder();
+
+        document.getElementById('submit').addEventListener('click', function() {
+          geocodeAddress(geocoder, map);
+        });
+
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByAcKWzArzxOwNRHIRNZOuJlkN9uZ7xOw&callback=initMap">
+    </script>
   </body>
 </html>

@@ -1,7 +1,6 @@
 const fs = require('fs');
 const globby = require('globby');
 
-
 // get current file path, relative to directory that the script is run from
 const currentFileRelative = () => {
   // based off of http://stackoverflow.com/a/31856198/358804

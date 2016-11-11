@@ -1,5 +1,6 @@
 # Mashup project
 
+<<<<<<< HEAD
 This project is open-ended!
 
 * [AJAX demos](https://github.com/advanced-js/deck/tree/gh-pages/demos/ajax)
@@ -53,3 +54,10 @@ Within this repository directory in your [virtual machine](https://github.com/st
     ```bash
     npm test -s
     ```
+=======
+This web app takes an image URL and pulls Creative tools from Aviary to facilitate in-app photo editing. It also saves the newly edited image back to the website and can then be easily downloaded.
+
+API used: Aviary
+
+References: Aviary guide to using Aviary API
+>>>>>>> 8b2f4f7182ee3413d13dbc17a42da76c8612a225

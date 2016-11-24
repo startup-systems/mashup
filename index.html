@@ -4,5 +4,31 @@
     <title>Mashup</title>
   </head>
   <body>
-  </body>
+	 <script src="node_modules/jquery/dist/jquery.js"></script>
+	<script>
+	 $.ajax({
+         url:'https://api.spotify.com/v1/artists/43ZHCT0cAZBISjO8DG9PnE/top-tracks?country=SE',
+         dataType: 'json'}) 
+         .done(function( json ) {
+	 $( "<h1>" ).text( json.tracks.album.name ).appendTo( "body" );
+    	 $( "<div.content>").html( json.tracks.artists.name ).appendTo( "body" );
+	         
+	
+})
+
+
+
+
+	 .fail(function( xhr, status, errorThrown ) {
+		alert( "Sorry, there was a problem!" );
+    		console.log( "Error: " + errorThrown );
+    		console.log( "Status: " + status );
+    		console.dir( xhr );
+ });
+
+	</script>
+
+</body>
 </html>
+
+

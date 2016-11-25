@@ -1,3 +1,6 @@
+# Reddit Tiles
+Many posts on the funny reddit group are just pictures.  This mashup takes the posts and displays them in an image tile-layout so images are easier to preview and browse through.
+
 # Mashup project
 
 This project is open-ended!

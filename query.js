@@ -1,24 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Mashup</title>
-  <style>
-      h1 {text-align: center; font-family: helvetica}
-      p {text-align: center; font-family: helvetica}
-      div {text-align: center;}
-  </style>
-  </head>
-  <body>
-      <h1>A Simple Stock Query Tool </h1>
-      <p>powered by Markit On Demand API</p>
-      <div class="wrapper">
-        <input type="text" id="symbolsearch" class="input- ui-autocomplete-input ui-autocomplete-loading" placeholder="Enter company name or symbol" autocomplete="off">
-        <button id="action-button">Search</button>
-      </div>
-      <p id="quote"></p>
-      <script type="text/javascript" src="https://code.jquery.com/jquery-1.6.4.js"></script>
-      <script>
-      $('#action-button').click(function() {
+$('#action-button').click(function() {
     $.ajax({
         url: 'http://dev.markitondemand.com/Api/v2/Lookup/jsonp',
         data: {
@@ -46,7 +26,4 @@
         },
         type: 'GET'
     });
-}); 
-    </script>
-  </body>
-</html>
+});

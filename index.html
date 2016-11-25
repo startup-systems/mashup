@@ -1,8 +1,65 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Mashup</title>
-  </head>
-  <body>
-  </body>
+<head>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+		<title>fz234</title>
+		<link href="style.css" rel="stylesheet" type="text/css" />
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+</head>
+<body>
+<div id="wrapper">
+	<div id="header">
+    <script>
+	$(document).ready(function(){
+		$('#immagine').click(function(){
+			$('#immagine').attr('src', 'http://orig05.deviantart.net/a1df/f/2011/112/8/f/nyan_cat_gif_by_kodiakpaws-d3emqu1.gif');
+		});
+});
+</script>
+</div>
+
+	<div id="main-content">
+		<div id="left-column">
+			<div id="logo">
+			fz234 Federico Zarfati
+			</div>
+			   <p>
+					 <img src="https://avatars3.githubusercontent.com/u/2929194?v=3&s=460" id="immagine" alt="altfff" width="139" height="150" style="margin: 0 10px 10px 0;float:left;" />
+						<em>This is my small biography!</em>
+								<em>I come from Italy and I am a Computer Scientist</em>
+										<em>I am really passionate about Artificial Intelligence.</em>
+			                 </p>
+		</div>
+		<div id="right-column">
+			<div class="sidebar">
+				<h3>About Me</h3>
+				<p>Hi! I am Federico and this is my website for the Startup Systems course!</p>
+        <div id="mapc"></div>
+        <button id="btn">load map</button>
+		</div>
+<script>
+    var map;
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -34.397, lng: 150.644},
+        zoom: 8
+      });
+    }
+    $(document).ready(function(){
+       $("#btn").click(function(){
+        $("#mapc").append('<div id="map"></div>');
+        initMap();
+        });
+     });
+</script>
+        <script async defer
+          src="https://maps.googleapis.com/maps/api/js?key=mykey">
+        </script>
+
+	</div>
+</div>
+</div>
+</body>
 </html>

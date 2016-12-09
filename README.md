@@ -1,1 +1,1 @@
-This app takes a zip code and tells you the temperature variability for that location in Kelvin. It utilizes the openweathermap.org api. It also changes the background of the site depending on the degree of diff.
+#This app takes a zip code and tells you the temperature variability for that location in Kelvin. It utilizes the openweathermap.org api. It also changes the background of the site depending on the degree of diff.

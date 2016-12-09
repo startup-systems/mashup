@@ -1,44 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <style>
-      #map {height: 100%;}
-      html, body {height: 100%;margin: 0;padding: 0;}
-    </style>
-  </head>
-  <body>
-    <div id="map"></div>
+    <head>
+        <meta charset="utf-8">
+        <title>zip to weather variability</title>
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+        <input id="zip" type="text" placeholder="zip code here silly">
+        <input id="submit" type="submit" />
+        <h2>Temperature Variability is:</h2>
+        <h1></h1>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 2,
-          center: {lat: 28.7041, lng: 77.1025},
-          mapTypeId: 'satellite'
+      $('#submit').click(function() {
+        var zip = $('#zip').val();
+        var xmlRequest = $.ajax({
+          method: "POST",
+          url: "http://api.openweathermap.org/data/2.5/weather?zip=" + zip + ",us&APPID=511eec5990e0d54943a94313496315c3",
+        })
+        xmlRequest.done(function(msg) {
+          console.log(msg.weather[0].description);
+          var diff = msg.main.temp_max - msg.main.temp_min;
+          console.log(diff);
+          $('h1').text(diff + " degrees Kelvin")
+
+          diff = parseInt(diff);
+          if (diff >= 6) {
+            $('body').css("background-color", 'red');
+          } else if (diff >= 3) {
+            $('body').css("background-color", 'orange');
+          } else {
+            $('body').css("background-color", 'yellow');
+          }
         });
-        var script = document.createElement('script');
-
-        script.src = 'https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js';
-        document.getElementsByTagName('head')[0].appendChild(script);
-
-      }
-
-      function eqfeed_callback(results) {
-        var heatmapData = [];
-        for (var i = 0; i < results.features.length; i++) {
-          var coords = results.features[i].geometry.coordinates;
-          var latLng = new google.maps.LatLng(coords[1], coords[0]);
-          heatmapData.push(latLng);
-        }
-        var heatmap = new google.maps.visualization.HeatmapLayer({
-          data: heatmapData,
-          dissipating: false,
-          map: map
-        });
-      }
+      });
     </script>
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDS5r_xH3AQj0RRKtalEBP4CZwC1nS0Q84&libraries=visualization&callback=initMap">
-    </script>
-  </body>
 </html>

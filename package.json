@@ -1,6 +1,6 @@
 {
-  "name": "mashup",
-  "description": "mashup project",
+  "name": "zip to weather",
+  "description": "zip to weather",
   "scripts": {
     "check_ajax": "node testAjax.js",
     "lint_js": "jshint --extract=auto --extra-ext=.html .",

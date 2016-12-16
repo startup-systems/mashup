@@ -1,4 +1,4 @@
-# WHO - Google Map  Mashup
+# Google Map - Whois Mashup
 
 ## Description
 A mashup project that shows the the geolocation on Google Map based on visitor's WHOIS record.

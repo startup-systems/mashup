@@ -1,8 +1,62 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Mashup</title>
+    <title>Mashup: IP+Location</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 50%;
+      }
+    </style>
   </head>
   <body>
+    <h1>A Javascript Mashup: IP + Location</h1>
+    <p>This is your approximate location based on your IP address.</p>
+    <div id="map"></div>
+    <p>This is your approximate WHOIS record based on your IP address.</p>
+    <table id="whois"></table>
+
+    <script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGjuVkx0ICgkjnNAnHkZb6Gr1evz6FJqE&callback=main"
+    async defer></script>
+
+    <!-- <script src='js/main.js'></script> -->
+    <script type='text/javascript'>
+    ///Google Map API:
+
+    function initMap(ipLng, ipLat){
+      var map;
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: ipLat, lng: ipLng},
+        zoom: 8
+      });
+      var marker = new google.maps.Marker({
+              position: {lat: ipLat, lng: ipLng},
+              map: map
+            });
+    }
+    //WHOIS API:
+
+    function main(){
+      var ipLng;
+      var ipLat;
+      $.getJSON("http://ip-api.com/json/?callback=?", function(data) {
+          var table_body = "";
+          $.each(data, function(k, v) {
+             table_body += "<tr><td>" + k + "</td><td><b>" + v + "</b></td></tr>";
+          });
+          $("#whois").html(table_body);
+          initMap(data.lon, data.lat);
+          console.log(data.lon, data.lat);
+        });
+    }
+    </script>
   </body>
 </html>

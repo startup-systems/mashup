@@ -1,7 +1,7 @@
-# IP-MAP Mashup
+# WHO - Google Map  Mashup
 
 ## Description
-A mashup project that shows the the geolocation based on visitor's IP address.
+A mashup project that shows the the geolocation on Google Map based on visitor's WHOIS record.
 It mashes up the outputs from two APIs:
 1. GPS coordinates in your IPWHOIS record (API by ip-api.com/)
 2. Visualize the GPS coordinates in a Google Map (API by maps.googleapis.com)

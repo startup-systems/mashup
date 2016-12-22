@@ -1,8 +1,64 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Mashup</title>
-  </head>
-  <body>
-  </body>
+<head>
+<title>Mashup project by zl557</title>
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="white">
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<style type="text/css">
+.loading {
+	min-height: 50px;
+	border-radius: 4px;
+	border: 1px dashed #eee
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+	<h2><a href="./">What's related</a></h2>
+
+	<form>
+		<div class="form-group">
+			<input class="form-control" id="searchinput" type="search" autocomplete="off" placeholder="Type somthing to start..." />
+		</div>
+		<div id="searchlist" class="list-group">
+			<a class="list-group-item" href="https://github.com/brokenmouse"><span>Zephyr Liu is a Cornell Tech student, his Github page is https://github.com/brokenmouse</span></a>
+			<a class="list-group-item" href="https://github.com/startup-systems/mashup"><span>This is his submission as Mashup project for Startup System and Engineering class</span></a>
+			<!-- FILLED DYNAMICALLY -->
+		</div>
+	</form>
+</div>
+
+<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="./vendor/bootstrap-list-filter.src.js"></script>
+<script>
+$('#searchlist').btsListFilter('#searchinput', {
+	loadingClass: 'loading',
+	sourceTmpl: '<a class="list-group-item" href="{ url }"><span>{ articleBody }</span></a>',
+	sourceData: function(text, callback) {
+		var service_url = 'https://kgsearch.googleapis.com/v1/entities:search';
+		var params = {
+		'query': text,
+		'limit': 10,
+		'indent': true,
+		'key' : 'AIzaSyBqfzzRnJ-vMhZM5NZhTUnXA6KXDCKtICo',
+		};
+		return $.getJSON(service_url + '?callback=?', params, function(response) {
+			var list = [];
+			$.each(response.itemListElement, function(i, element) {
+			  	list.push(element.result.detailedDescription);
+			});
+			callback(list);
+		});
+
+	}
+
+});
+</script>
+</body>
 </html>

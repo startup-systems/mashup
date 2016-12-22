@@ -1,8 +1,91 @@
+
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Mashup</title>
-  </head>
-  <body>
-  </body>
+<head>
+<title>Mashup</title>
+
+<script src="./vendor/jquery-3.1.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://apis.google.com/js/client.js?onload=onClientLoad" type="text/javascript"></script>
+<script>
+function onYouTubeApiLoad() {
+    // This API key is intended for use only in this lesson.
+    // See https://goo.gl/PdPA1 to get a key for your own applications.
+    gapi.client.setApiKey('AIzaSyCvLwyHBdQ19KHInmzHvk61TIL2e41v7ik');
+
+    //search();
+}
+
+function showResponse(response) {
+    $("#result").empty();
+    for (var i =0;i<5;i++){
+      //alert(response.items[i].snippet.title);
+
+      $("#result").append(
+                    "<div>" + response.items[i].snippet.title + "<img src=" +
+                    response.items[i].snippet.thumbnails.default.url + "/>" +
+                    "</div>"  + "<hr/>");
+    }
+
+    //var responseString = JSON.stringify(response, '', 2);
+    //document.getElementById('response').innerHTML += responseString;
+}
+function onSearchResponse(response) {
+    showResponse(response);
+}
+
+  function searchYoutube(input){
+
+    var xmlhttp;
+    xmlhttp=new XMLHttpRequest();
+    xmlhttp.open("GET","https://developers.google.com/apis-explorer/#p/youtube/v3/youtube.search.list?part=snippet&order=viewCount&q=skateboarding+dog&type=video&videoDefinition=high",true);
+    xmlhttp.send();
+
+
+    gapi.client.load('youtube', 'v3', onYouTubeApiLoad);
+    var request = gapi.client.youtube.search.list({
+        part: 'snippet',
+        q: input
+    });
+    request.execute(onSearchResponse);
+  }
+
+</script>
+
+
+
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+
+  $("button").click(function(){
+    var input = $("input:text").val();
+    //alert(input);
+
+
+    searchYoutube(input);
+    //searchYoutube(input);
+    //alert($("input:text").val());
+  });
+});
+</script>
+
+
+
+
+</head>
+<body>
+  <h1>Search YouTube Videos</h1>
+
+
+Keyword: <input type="text" name="keyword" value="Bill" /><br />
+
+<button>Search</button>
+
+  <pre id="response"></pre>
+
+  <div id="result"></div>
+</body>
 </html>

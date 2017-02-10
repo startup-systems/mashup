@@ -1,8 +1,35 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-  <head>
-    <title>Mashup</title>
-  </head>
-  <body>
-  </body>
+<head>
+	<meta charset="utf-8">
+	<title> Victoria and Albert Museum </title>
+	<link rel="stylesheet" type="text/css" href="mashup.css">
+	<script src="./vendor/jquery-3.1.1.min.js"></script> 
+</head>
+<body>
+	<h1> Carolina Peisch's Mashup: </h1>
+	<p> Here is a list of all the animal paintings at the Victoria and Albert Museum. </p>
+	<p id="Title"> </p>
+	<script>
+	$.ajax({
+		url: "http://www.vam.ac.uk/api/json/museumobject/search?q=animals", 
+		dataType: "json",
+		success: function(data){
+			var records = data.records;
+			var titles = [];
+			records.forEach(function(records){
+				var fields = records.fields;
+				var title = fields.title;
+				$('#Title').append(title + "<br>");
+			});
+		},
+		error: function(request, status, error){
+			console.log(error);
+		}
+    });
+	</script>
+</body>
 </html>
+
+
+

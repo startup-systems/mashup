@@ -66,16 +66,9 @@ code {
 
 /* Customize container */
 
-@media (min-width: 48em) {
-    .container {
-        max-width: 46rem;
-    }
-}
-
 .container-narrow > hr {
     margin: 2rem 0;
 }
-
 
 /* Main marketing message and sign up button */
 

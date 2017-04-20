@@ -1,8 +1,62 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Mashup</title>
-  </head>
-  <body>
-  </body>
+<head>
+
+<title>Spotify Mashup</title>
+
+</head>
+<body>
+<div class="container">
+    <h1>Artist Search</h1>
+  
+    <form action= "search" id="search-form">
+        <input type="text" id="query" value="" class="form-control" placeholder="Artist Name"/>
+        <input type="submit" id="search" class="btn-primary" value="Search" />
+    </form>
+    <div id="results"></div>
+</div>
+<script id="results-template" type="text/x-handlebars-template">
+    {{#each albums.items}}
+    <div style="background-image:url({{images.0.url}})" data-album-id="{{id}}" class="cover"></div>
+    {{/each}}
+</script>
+
+ <script>
+    var getArtistDetails = function(url) {
+      $.ajax({
+        url : url,
+        type : 'GET',
+        dataType:'json',
+        success : function(responseJSON) {
+          console.log(responseJSON);
+        },
+        error : function(request,error) {
+            console.log("Request: "+JSON.stringify(request));
+        }
+      });
+    };
+
+    var searchForArtist = function(artist) {
+      $.ajax({
+        url : 'https://api.spotify.com/v1/search?q=' + artist + '&type=artist',
+        type : 'GET',
+        dataType:'json',
+        success : function(responseJSON) {
+          console.log(responseJSON);
+          getArtistDetails(responseJSON.artists.items[0].href);
+        },
+        error : function(request,error) {
+            console.log("Request: "+JSON.stringify(request));
+        }
+      });
+    };
+
+    
+    searchForArtist('Michael Jackson');
+    </script>
+
+</body>
 </html>
+
+
+

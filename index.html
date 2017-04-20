@@ -1,8 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Mashup</title>
-  </head>
-  <body>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta name="viewport" content="width=device-width">
+  <title>Mashup</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <script>
+ $.ajax({
+         url:'https://api.spotify.com/v1/albums/3WssRTXDMQPIv8uFBVkEZH',
+         dataType: 'json',
+         success: function(result){ 
+           var album = result.external_urls.spotify;
+             var img = result.images[0].url;
+             $('#Album').append('<div class="album"><iframe src="'+album+'"></iframe></div>');
+           for (var i = 0; i < result.tracks.items.length; i++){
+             var songname = result.tracks.items[i].name;
+             var number = result.tracks.items[i].track_number;
+             var link = result.tracks.items[i].external_urls.spotify;
+             $('#Album').append('<div class = "tracks" >' + number +'. '+ '<a class="link" href="'+link+'">'+songname + '</a></div>');
+           }
+         }
+       });
+  </script>
+</head>
+<body>
+  <h3>Home Page</h3>
+  <p></p>
+  <div class="bio">
+ Adding Spotify API to the my webpage.
+</div>
+   <div id="Album"></div>
+</body>
 </html>

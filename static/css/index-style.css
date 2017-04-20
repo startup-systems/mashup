@@ -1,0 +1,114 @@
+.centerIt{
+    height: 10em;
+    position: relative;
+    margin: 0;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+.appDescription {
+	color: #D3D3D3;
+	font-size: 18px;
+ 	text-align: center
+}
+
+
+.clear {
+	clear: both;
+}
+
+body {
+	font-family: 'Abel', sans-serif;
+}
+
+h1 {
+	color:white;
+	font-size: 6.5em;
+	text-align: center;
+
+}
+.sign-up {
+	float:right;
+	font-size: 1.5em;
+	font-weight: bold;
+	border-radius: 5px;
+	color:black;
+	margin:1.5% 6% 0 0;
+	padding:1%;
+	border-radius:8px;
+	background:white;
+}
+
+
+#login-form {
+	width:300px;
+	height: 150px;
+	margin:0 auto;
+	border-radius: 7px;
+}
+.form-group {
+	height: 100px;
+}
+
+.form-group:nth-child(1) {
+	background: white;
+}
+.form-group input,button {
+	width:120%;
+	border:none;
+	padding:5	px;
+}
+.control-ele {
+	display: inline-block;
+}
+
+#login-form legend{
+	text-align:center;
+}
+.form-group div {
+	width:80%;
+	height:50px;
+}
+.form-input {
+	border-radius:5px;
+	padding:3px;
+}
+input,button {
+	width:270px;
+	height:38px;
+}
+input:focus {
+	outline: 0;
+}
+#username{
+	border-bottom:burlywood
+	border-style: solid;
+	border-left: none;
+	border-right:none;
+	border-top: none;
+}
+#login-button {
+	width:100%;
+	padding-right:30px;
+}
+.form-group:nth-child(2) {
+	margin-top: 10px;
+}
+.form-group button {
+	width:98%;
+	background: #9EDAC1;
+	border:none;
+	border-radius:5px;
+	height:39px	;
+}
+
+a:visited 
+{
+    text-decoration: none; 
+    decoration: none; 
+}
+
+

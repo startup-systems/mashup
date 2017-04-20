@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Mashup</title>
-    <link rel="stylesheet" type="text/css" href="css/index.css">
-    <script src="vendor/adata-ngular.min.js"></script>
-    <!-- <script type="text/javascript" src="js/index.js"></script> -->
-    <script type="text/javascript">
-    	var app = angular.module('myApp', []);
+var app = angular.module('myApp', []);
 
 app.config(['$httpProvider', function($httpProvider) {
         $httpProvider.defaults.useXDomain = true;
@@ -57,38 +49,3 @@ app.controller('myCtrl', function($scope, $http) {
     	});
     };
 });
-    </script>
-
-  </head>
-  <body>
-
-  	<div data-ng-app="myApp" data-ng-controller="myCtrl">
-  	<div class="tickr">Tickr</div>
-
-	  	<div class="find">
-	  		<input value="submit" data-ng-model="searchStock" placeholder="Find Stocks" class="findBar"><button data-ng-click="findStock()" class="goButton">Go</button> 
-	  	</div>
-
-	  	<div data-ng-repeat="stock in searchResults" data-ng-if="searchResults">
-	  		<div class="results" data-ng-click="addStock($index)" data-ng-if="stock.Name != ''">{{stock.Name}}</div>
-	  	</div>
-
-	  	<table>
-		  <tr>
-		    <th>Stock</th>
-		    <th>High</th>
-		    <th>Low</th>
-		    <th>Last Price</th>
-		  </tr>
-		  <tr data-ng-repeat="myStock in myStocks">
-		    <td>{{myStock.Symbol}}</td>
-		    <td>{{myStock.High}}</td>
-		    <td>{{myStock.Low}}</td>
-		    <td>{{myStock.LastPrice}}</td>
-		  </tr>
-		</table>
-
-	</div>
-
-  </body>
-</html>
